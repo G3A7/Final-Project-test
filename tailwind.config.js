@@ -5,9 +5,9 @@ export default {
   theme: {
     container: {
       center: true,
-      // screens: {
-      //   "2xl": "1280px",
-      // },
+      screens: {
+        "2xl": "1280px",
+      },
     },
     extend: {
       colors: {

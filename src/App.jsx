@@ -9,7 +9,7 @@ import Register from "./components/Register/Register";
 import Cart from "./components/Cart/Cart";
 import NotFound from "./components/NotFound/NotFound";
 import Error from "./components/Error/Error";
-
+import TokenContextProvider from "./context/TokenContextProvider";
 function App() {
   const router = createBrowserRouter([
     {
@@ -57,9 +57,9 @@ function App() {
     },
   ]);
   return (
-    <>
+    <TokenContextProvider>
       <RouterProvider router={router} />
-    </>
+    </TokenContextProvider>
   );
 }
 

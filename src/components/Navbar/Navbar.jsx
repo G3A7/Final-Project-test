@@ -2,8 +2,10 @@
 
 import { Link, NavLink } from "react-router-dom";
 import logo from "../../assets/freshcart-logo.svg";
-import { useRef } from "react";
+import { useContext, useRef } from "react";
+import { tokenContext } from "../../context/TokenContextProvider";
 function Navbar() {
+  const { token } = useContext(tokenContext);
   const nav = useRef();
   const heightul = useRef();
   function Expand() {
@@ -30,105 +32,119 @@ function Navbar() {
               <img src={logo} alt="logo Fresh Cart" />
             </Link>
           </div>
-          <div className="row  sm:order-4 items-center ">
-            <ul className="row items-center gap-2">
-              <li className="cursor-pointer">
-                <Link className="">
-                  <i
-                    className="fa-regular fa-heart text-2xl
+
+          {token ? (
+            <>
+              <div className="row  sm:order-4 items-center ">
+                <ul className="row items-center gap-2">
+                  <li className="cursor-pointer">
+                    <Link className="">
+                      <i
+                        className="fa-regular fa-heart text-2xl
                   text-green-600"
-                  ></i>
-                </Link>
-              </li>
-              <li className="">
-                <Link>
-                  <i className="fa-solid fa-cart-plus  text-xl text-green-600"></i>
-                </Link>
+                      ></i>
+                    </Link>
+                  </li>
+                  <li className="">
+                    <Link>
+                      <i className="fa-solid fa-cart-plus  text-xl text-green-600"></i>
+                    </Link>
+                  </li>
+                </ul>
+
+                <div
+                  onClick={() => {
+                    Expand();
+                  }}
+                  className="burgurIcon cursor-pointer block sm:hidden"
+                >
+                  <i className="fa-solid fa-bars text-2xl"></i>
+                </div>
+
+                <div className="ms-2 sm:ms-4">
+                  <button className="bg-red-600 p-1 rounded-md text-white hover:bg-red-700">
+                    <i className="fa-solid fa-right-from-bracket text-xl"></i>
+                  </button>
+                </div>
+              </div>
+
+              <ul
+                ref={heightul}
+                className="w-full sm:gap-4 sm:text-lg sm:font-medium sm:w-fit sm:row  text-center py-5
+           space-y-2 sm:space-y-0"
+              >
+                <li className="">
+                  <NavLink
+                    className={(bt5a) =>
+                      bt5a.isActive
+                        ? "relative active pb-2"
+                        : "relative after:absolute after:w-0 after:border-b-[3px] after:border-green-600 after:bg-green-600 after:bottom-0 after:left-0 hover:after:w-full after:transition-all after:duration-[.5s] pb-2 "
+                    }
+                    to={"/home"}
+                  >
+                    Home
+                  </NavLink>
+                </li>
+                <li className="relative">
+                  <NavLink
+                    className={(bt5a) =>
+                      bt5a.isActive
+                        ? "relative active pb-2 "
+                        : "relative after:absolute after:w-0 after:border-b-[3px] after:border-green-600 after:bg-green-600 after:bottom-0 after:left-0 hover:after:w-full after:transition-all after:duration-[.5s] pb-2"
+                    }
+                    to={"/products"}
+                  >
+                    Products
+                  </NavLink>
+                </li>
+                <li className="relative">
+                  <NavLink
+                    className={(bt5a) =>
+                      bt5a.isActive
+                        ? "relative active pb-2 "
+                        : "relative after:absolute after:w-0 after:border-b-[3px] after:border-green-600 after:bg-green-600 after:bottom-0 after:left-0 hover:after:w-full after:transition-all after:duration-[.5s] pb-2"
+                    }
+                    to={"/category"}
+                  >
+                    Categories
+                  </NavLink>
+                </li>
+                <li className="relative">
+                  <NavLink
+                    className={(bt5a) =>
+                      bt5a.isActive
+                        ? "relative active pb-2 "
+                        : "relative after:absolute after:w-0 after:border-b-[3px] after:border-green-600 after:bg-green-600 after:bottom-0 after:left-0 hover:after:w-full after:transition-all after:duration-[.5s] pb-2"
+                    }
+                    to={"/brands"}
+                  >
+                    Brands
+                  </NavLink>
+                </li>
+                <li className="relative">
+                  <NavLink
+                    className={(bt5a) =>
+                      bt5a.isActive
+                        ? "relative active pb-2 "
+                        : "relative after:absolute after:w-0 after:border-b-[3px] after:border-green-600 after:bg-green-600 after:bottom-0 after:left-0 hover:after:w-full after:transition-all after:duration-[.5s] pb-2"
+                    }
+                    to={"/orders"}
+                  >
+                    Orders
+                  </NavLink>
+                </li>
+              </ul>
+            </>
+          ) : (
+            <ul className="row gap-3">
+              <li className="relative">
+                <NavLink to={"/register"}>Register</NavLink>
+              </li>{" "}
+              <li className="relative">
+                <NavLink to={"/login"}>Login</NavLink>
               </li>
             </ul>
-            {/* button */}
-            <div
-              onClick={() => {
-                Expand();
-              }}
-              className="burgurIcon cursor-pointer block sm:hidden"
-            >
-              <i className="fa-solid fa-bars text-2xl"></i>
-            </div>
-            {/* log Out */}
-            <div className="ms-2 sm:ms-4">
-              <button className="bg-red-600 p-1 rounded-md text-white hover:bg-red-700">
-                <i className="fa-solid fa-right-from-bracket text-xl"></i>
-              </button>
-            </div>
-          </div>
-          {/* ul links */}
-          <ul
-            ref={heightul}
-            className="w-full sm:gap-4 sm:text-lg sm:font-medium sm:w-fit sm:row  text-center py-5
-           space-y-2 sm:space-y-0"
-          >
-            <li className="">
-              <NavLink
-                className={(bt5a) =>
-                  bt5a.isActive
-                    ? "relative active pb-2"
-                    : "relative after:absolute after:w-0 after:border-b-[3px] after:border-green-600 after:bg-green-600 after:bottom-0 after:left-0 hover:after:w-full after:transition-all after:duration-[.5s] pb-2 "
-                }
-                to={"/home"}
-              >
-                Home
-              </NavLink>
-            </li>
-            <li className="relative">
-              <NavLink
-                className={(bt5a) =>
-                  bt5a.isActive
-                    ? "relative active pb-2 "
-                    : "relative after:absolute after:w-0 after:border-b-[3px] after:border-green-600 after:bg-green-600 after:bottom-0 after:left-0 hover:after:w-full after:transition-all after:duration-[.5s] pb-2"
-                }
-                to={"/products"}
-              >
-                Products
-              </NavLink>
-            </li>
-            <li className="relative">
-              <NavLink
-                className={(bt5a) =>
-                  bt5a.isActive
-                    ? "relative active pb-2 "
-                    : "relative after:absolute after:w-0 after:border-b-[3px] after:border-green-600 after:bg-green-600 after:bottom-0 after:left-0 hover:after:w-full after:transition-all after:duration-[.5s] pb-2"
-                }
-                to={"/category"}
-              >
-                Categories
-              </NavLink>
-            </li>
-            <li className="relative">
-              <NavLink
-                className={(bt5a) =>
-                  bt5a.isActive
-                    ? "relative active pb-2 "
-                    : "relative after:absolute after:w-0 after:border-b-[3px] after:border-green-600 after:bg-green-600 after:bottom-0 after:left-0 hover:after:w-full after:transition-all after:duration-[.5s] pb-2"
-                }
-                to={"/brands"}
-              >
-                Brands
-              </NavLink>
-            </li>
-            <li className="relative">
-              <NavLink
-                className={(bt5a) =>
-                  bt5a.isActive
-                    ? "relative active pb-2 "
-                    : "relative after:absolute after:w-0 after:border-b-[3px] after:border-green-600 after:bg-green-600 after:bottom-0 after:left-0 hover:after:w-full after:transition-all after:duration-[.5s] pb-2"
-                }
-                to={"/orders"}
-              >
-                Orders
-              </NavLink>
-            </li>
-          </ul>
+          )}
         </div>
       </div>
     </nav>

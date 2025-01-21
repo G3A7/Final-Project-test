@@ -2,12 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .btn {
+    @apply bg-green-600 text-white p-2 rounded-md tracking-wider hover:bg-green-700 w-full sm:w-fit;
+  }
+}
+
 @layer utilities {
   .row {
     @apply flex flex-wrap p-2;
   }
 
   .active {
-    @apply after:absolute after:w-full after:border-b-[3px] after:border-green-600 after:bg-green-600 after:bottom-0 after:left-0 hover:after:w-full after:transition-all after:duration-[.5s];
+    @apply after:absolute after:w-full after:border-b-[3px] after:border-green-600 after:bg-green-600 after:bottom-0 after:left-0;
   }
 }
+
+.custom_animate {
+  animation: move_cart 0.9s linear infinite;
+}
+@keyframes move_cart {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(7px);
+  }
+}
+/* hover:after:w-full after:transition-all after:duration-[.5s] */
