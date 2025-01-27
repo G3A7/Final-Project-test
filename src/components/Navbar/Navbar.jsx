@@ -1,29 +1,39 @@
 // import { Link, NavLink } from "react-router-dom";
 
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import logo from "../../assets/freshcart-logo.svg";
-import { useContext, useRef } from "react";
+import { useContext, useRef, useState } from "react";
 import { tokenContext } from "../../context/TokenContextProvider";
 function Navbar() {
-  const { token } = useContext(tokenContext);
-  const nav = useRef();
+  let { token, setToken } = useContext(tokenContext);
+  const navigate = useNavigate();
+  // token = true;
+  function logoutFn() {
+    localStorage.removeItem("token");
+    setToken(null);
+    navigate("/login");
+  }
+  const [expand, setExapnd] = useState(true);
+  const [h, setHeight] = useState(75);
   const heightul = useRef();
   function Expand() {
-    // console.log(heightul.current.scrollHeight + 85);
-    // const hNav = heightul.current.scrollHeight + 85;
-    if (nav.current.classList.contains("max-h-[85px]")) {
-      nav.current.classList.remove("max-h-[85px]");
-      nav.current.classList.add(`max-h-[277px]`);
+    console.log(expand);
+    // console.log(heightul.current.scrollHeight + 75);
+    if (expand) {
+      setHeight(heightul.current.scrollHeight + 75);
     } else {
-      nav.current.classList.add("max-h-[85px]");
-      nav.current.classList.remove(`max-h-[277px]`);
+      setHeight(75);
     }
+    setExapnd(!expand);
   }
+
   return (
     // sm:max-h-none
     <nav
-      ref={nav}
-      className="bg-navbar-bg max-h-[85px] pt-1 overflow-hidden transition-all duration-[.5s] fixed top-0 left-0 right-0 z-[999]"
+      //  max-h-[85px]
+      style={{ maxHeight: `${h}px` }}
+      className={`bg-navbar-bg pt-1  overflow-hidden transition-all duration-[.5s]
+         fixed top-0 left-0 right-0 z-[50]`}
     >
       <div className="container">
         <div className="row justify-between items-center">
@@ -38,7 +48,7 @@ function Navbar() {
               <div className="row  sm:order-4 items-center ">
                 <ul className="row items-center gap-2">
                   <li className="cursor-pointer">
-                    <Link className="">
+                    <Link to={"/fav"} className="">
                       <i
                         className="fa-regular fa-heart text-2xl
                   text-green-600"
@@ -46,7 +56,7 @@ function Navbar() {
                     </Link>
                   </li>
                   <li className="">
-                    <Link>
+                    <Link to={"/cart"}>
                       <i className="fa-solid fa-cart-plus  text-xl text-green-600"></i>
                     </Link>
                   </li>
@@ -62,7 +72,12 @@ function Navbar() {
                 </div>
 
                 <div className="ms-2 sm:ms-4">
-                  <button className="bg-red-600 p-1 rounded-md text-white hover:bg-red-700">
+                  <button
+                    onClick={() => {
+                      logoutFn();
+                    }}
+                    className="bg-red-600 p-1 rounded-md text-white hover:bg-red-700"
+                  >
                     <i className="fa-solid fa-right-from-bracket text-xl"></i>
                   </button>
                 </div>
@@ -97,6 +112,7 @@ function Navbar() {
                     Products
                   </NavLink>
                 </li>
+
                 <li className="relative">
                   <NavLink
                     className={(bt5a) =>

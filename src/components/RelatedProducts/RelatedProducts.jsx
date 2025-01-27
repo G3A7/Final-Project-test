@@ -1,37 +1,42 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import Product from "../Product/Product";
 
-function Products() {
+function RelatedProducts() {
   const [products, setProducts] = useState([]);
-  const [error, setError] = useState(null);
   const [loader, setLoader] = useState(true);
+  const [error, setError] = useState(null);
   const url = `https://ecommerce.routemisr.com/api/v1/products/`;
-  async function getProducts() {
+  const { idC } = useParams();
+  async function getRelatedProducts() {
     try {
       setLoader(true);
       const { data } = await axios.get(url);
-      console.log(data);
-      setProducts(data.data);
+      setProducts(
+        data.data.filter((e) => {
+          return e.category._id == idC;
+        })
+      );
       setError(null);
-    } catch (err) {
-      console.log(err);
-      setError(err.response.data.message);
-      setProducts([])
+      setLoader(null);
+    } catch (error) {
+      console.log(error);
+      setProducts([]);
+      setError(error.response.data.message);
     } finally {
       setLoader(null);
     }
   }
   useEffect(() => {
-    getProducts();
-  }, []);
-
+    getRelatedProducts();
+  }, [idC]);
   return (
-    <>
+    <div>
       <h1 className="text-2xl ps-4 font-semibold">Recent Products</h1>
-      <div className="row justify-center ">
+      <div className="row justify-center">
         {loader && (
-          <div className="h-screen w-full flex items-center justify-center ">
+          <div className="h-[300px] w-full flex items-center justify-center ">
             <i className="text-7xl text-green-500 fas fa-spin fa-spinner"></i>
           </div>
         )}
@@ -49,8 +54,8 @@ function Products() {
           })
         )}
       </div>
-    </>
+    </div>
   );
 }
 
-export default Products;
+export default RelatedProducts;

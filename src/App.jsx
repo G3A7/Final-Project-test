@@ -10,6 +10,8 @@ import Cart from "./components/Cart/Cart";
 import NotFound from "./components/NotFound/NotFound";
 import Error from "./components/Error/Error";
 import TokenContextProvider from "./context/TokenContextProvider";
+import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
+import ProductDetails from "./components/ProductDetails/ProductDetails";
 function App() {
   const router = createBrowserRouter([
     {
@@ -19,23 +21,39 @@ function App() {
       children: [
         {
           index: true,
-          element: <Home />,
+          element: (
+            <ProtectedRoute>
+              <Home />
+            </ProtectedRoute>
+          ),
         },
         {
           path: "/home",
-          element: <Home />,
+          element: (
+            <ProtectedRoute>
+              <Home />
+            </ProtectedRoute>
+          ),
         },
         {
           path: "/products",
-          element: <Products />,
+          element: (
+            <ProtectedRoute>
+              <Products />
+            </ProtectedRoute>
+          ),
         },
         {
-          path: "brands",
+          path: "/brands",
           element: <Brands />,
         },
         {
           path: "/categories",
-          element: <Categories />,
+          element: (
+            <ProtectedRoute>
+              <Categories />
+            </ProtectedRoute>
+          ),
         },
         {
           path: "/login",
@@ -47,8 +65,28 @@ function App() {
         },
         {
           path: "/cart",
-          element: <Cart />,
+          element: (
+            <ProtectedRoute>
+              <Cart />
+            </ProtectedRoute>
+          ),
         },
+        {
+          path: "/products/:id/:idC",
+          element: (
+            <ProtectedRoute>
+              <ProductDetails />
+            </ProtectedRoute>
+          ),
+        },
+        // {
+        //   path: "/fav",
+        //   element: (
+        //     <ProtectedRoute>
+        //       <Cart />
+        //     </ProtectedRoute>
+        //   ),
+        // },
         {
           path: "*",
           element: <NotFound />,
