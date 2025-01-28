@@ -1,11 +1,55 @@
 import axios from "axios";
 // import img from "../../assets/PngItem_4021982.png";
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import RelatedProducts from "../RelatedProducts/RelatedProducts";
 import Slider from "react-slick";
+import { cartContext } from "../../context/CartContextProvider";
+import toast from "react-hot-toast";
 
 function ProductDetails() {
+  const { addToCart } = useContext(cartContext);
+  const [loaderToCart, setLoaderToCart] = useState(false);
+  async function addToCartProduct(id) {
+    const dataPromis = addToCart(id);
+    toast.promise(
+      dataPromis,
+      {
+        loading: "Loading",
+        success: "Product added successfully to your cart",
+        error: "Error",
+      },
+      {
+        position: "top-center",
+      }
+    );
+    try {
+      setLoaderToCart(true);
+      const data = await dataPromis;
+      if (data.status == "success") {
+        // toast.success(data.message, {
+        //   position: "top-center",
+        //   style: {
+        //     background: "#333",
+        //     color: "#fff",
+        //   },
+        // });
+        setLoaderToCart(null);
+      } else {
+        toast.error("Product not added  to your cart", {
+          position: "top-center",
+        });
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error("Product not added  to your cart", {
+        position: "top-center",
+      });
+    } finally {
+      setLoaderToCart(null);
+    }
+  }
+
   const settings = {
     dots: false,
     arrows: false,
@@ -26,7 +70,7 @@ function ProductDetails() {
     try {
       setLoader(true);
       const { data } = await axios.get(`${url}${id}`);
-      console.log(data.data);
+      // console.log(data.data);
       setProduct(data.data);
       setLoader(null);
       setError(null);
@@ -91,7 +135,19 @@ function ProductDetails() {
                     <i className="fa-solid fa-star text-yellow-300"></i> {product?.ratingsAverage}
                   </p>
                 </div>
-                <button className="btn w-full">Add To Cart</button>
+                <button
+                  onClick={() => {
+                    addToCartProduct(product?.id);
+                  }}
+                  disabled={loaderToCart ? true : false}
+                  className={`btn w-full ${loaderToCart ? "cursor-not-allowed" : ""} `}
+                >
+                  {loaderToCart ? (
+                    <i className="fas fa-spin fa-spinner text-white text-lg"></i>
+                  ) : (
+                    "Add To Cart"
+                  )}
+                </button>
               </div>
             </div>
           )

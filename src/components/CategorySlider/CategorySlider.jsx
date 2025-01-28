@@ -40,7 +40,7 @@ function CategorySlider() {
     try {
       const { data } = await axios.get(url);
       setCategories(data.data);
-      console.log(categories);
+      // console.log(categories);
     } catch (error) {
       console.log(error);
     }
@@ -51,7 +51,7 @@ function CategorySlider() {
 
   return (
     <div className="my-[25px]">
-      <h1 className="font-semibold text-2xl ps-6 mb-2">Category Slider</h1>
+      {/* <h1 className="font-semibold text-2xl ps-6 mb-2">Category Slider</h1> */}
       <Slider {...settings}>
         {categories.map((e) => {
           return (

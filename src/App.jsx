@@ -1,4 +1,5 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
 import Layout from "./Layout/Layout";
 import Home from "./components/Home/Home";
 import Products from "./components/Products/Products";
@@ -12,6 +13,7 @@ import Error from "./components/Error/Error";
 import TokenContextProvider from "./context/TokenContextProvider";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import ProductDetails from "./components/ProductDetails/ProductDetails";
+import CartContextProvider from "./context/CartContextProvider";
 function App() {
   const router = createBrowserRouter([
     {
@@ -96,7 +98,10 @@ function App() {
   ]);
   return (
     <TokenContextProvider>
-      <RouterProvider router={router} />
+      <CartContextProvider>
+        <RouterProvider router={router} />
+        <Toaster />
+      </CartContextProvider>
     </TokenContextProvider>
   );
 }

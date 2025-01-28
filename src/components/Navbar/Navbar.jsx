@@ -4,8 +4,16 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import logo from "../../assets/freshcart-logo.svg";
 import { useContext, useRef, useState } from "react";
 import { tokenContext } from "../../context/TokenContextProvider";
+import { cartContext } from "../../context/CartContextProvider";
 function Navbar() {
+  const { numOfCartItems } = useContext(cartContext);
   let { token, setToken } = useContext(tokenContext);
+  const { loaderIconForNav } = useContext(cartContext);
+  // useEffect(() => {
+  //   console.log(loaderIconForNav);
+  //   // console.log("dasda");
+  // }, loaderIconForNav);
+  // const [loaderCart, setLoaderCart] = useState(false);
   const navigate = useNavigate();
   // token = true;
   function logoutFn() {
@@ -32,7 +40,7 @@ function Navbar() {
     <nav
       //  max-h-[85px]
       style={{ maxHeight: `${h}px` }}
-      className={`bg-navbar-bg pt-1  overflow-hidden transition-all duration-[.5s]
+      className={`bg-navbar-bg pt-1 dark:bg-slate-800  overflow-hidden transition-all duration-[.5s]
          fixed top-0 left-0 right-0 z-[50]`}
     >
       <div className="container">
@@ -55,9 +63,18 @@ function Navbar() {
                       ></i>
                     </Link>
                   </li>
-                  <li className="">
+                  <li className="relative ">
                     <Link to={"/cart"}>
-                      <i className="fa-solid fa-cart-plus  text-xl text-green-600"></i>
+                      <span
+                        className={`absolute bg-green-600 rounded-full top-[-20px] right-[-12px] size-[25px] flex items-center justify-center text-white `}
+                      >
+                        {loaderIconForNav ? (
+                          <i className="fas fa-spin fa-spinner"></i>
+                        ) : (
+                          numOfCartItems
+                        )}
+                      </span>
+                      <i className={`fa-solid fa-cart-plus text-xl text-green-600 `}></i>
                     </Link>
                   </li>
                 </ul>

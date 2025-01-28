@@ -7,8 +7,9 @@
     @apply bg-green-600 text-white p-2 rounded-md tracking-wider hover:bg-green-700 w-full sm:w-fit;
   }
 }
-body{
-  @apply pt-[6rem]
+/* bg-slate-800 */
+body {
+  @apply pt-[6rem];
 }
 @layer utilities {
   .row {
@@ -39,3 +40,5 @@ body{
     @apply top-[75px];
   }
 } */
+
+

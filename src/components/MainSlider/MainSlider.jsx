@@ -37,7 +37,7 @@ function MainSlider() {
   };
   return (
     <>
-      <div className="row">
+      <div className="row bg-slate-800 ">
         <div className="w-2/3">
           <Slider {...settings}>
             <img src={slide1} className=" sm:h-[400px] w-full " alt="" />

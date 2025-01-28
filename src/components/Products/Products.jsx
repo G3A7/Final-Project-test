@@ -11,13 +11,13 @@ function Products() {
     try {
       setLoader(true);
       const { data } = await axios.get(url);
-      console.log(data);
+      // console.log(data);
       setProducts(data.data);
       setError(null);
     } catch (err) {
       console.log(err);
       setError(err.response.data.message);
-      setProducts([])
+      setProducts([]);
     } finally {
       setLoader(null);
     }
@@ -28,8 +28,8 @@ function Products() {
 
   return (
     <>
-      <h1 className="text-2xl ps-4 font-semibold">Recent Products</h1>
-      <div className="row justify-center ">
+      {/* <h1 className="text-2xl ps-4 font-semibold">Recent Products</h1>  bg-slate-800*/}
+      <div className="row justify-center  ">
         {loader && (
           <div className="h-screen w-full flex items-center justify-center ">
             <i className="text-7xl text-green-500 fas fa-spin fa-spinner"></i>
