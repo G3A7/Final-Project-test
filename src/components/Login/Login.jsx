@@ -46,7 +46,7 @@ function Login() {
         setTimeout(() => {
           localStorage.setItem("token", data.token);
           setToken(data.token);
-          navigate("/home");
+          navigate("/");
         }, 700);
       }
     } catch (e) {
