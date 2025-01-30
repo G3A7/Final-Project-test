@@ -9,7 +9,9 @@ function WishListContextProvider({ children }) {
     JSON.parse(localStorage.getItem("fav"))
   );
   const [loaderFav, setLoaderFav] = useState(false);
-  const [facLength, setFavLength] = useState(JSON.parse(localStorage.getItem("fav")).length);
+  const [facLength, setFavLength] = useState(
+    localStorage.getItem("fav") ? JSON.parse(localStorage.getItem("fav"))?.length : 0
+  );
   //  عشان ال loader بتاع ال heart
   //   useEffect(() => {
   //     getAllWishList();
