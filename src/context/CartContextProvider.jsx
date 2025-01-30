@@ -66,6 +66,32 @@ function CartContextProvider({ children }) {
     }
   }
 
+  async function updateCountProduct(id, count) {
+    try {
+      const { data } = await axios.put(
+        `${url}/${id}`,
+        { count },
+        {
+          headers,
+        }
+      );
+      return data;
+    } catch (error) {
+      console.log(error);
+      return error;
+    }
+  }
+
+  async function deleteAllProductsInCart() {
+    try {
+      const { data } = await axios.delete(url, { headers });
+      return data;
+    } catch (error) {
+      console.log(error);
+      return error;
+    }
+  }
+
   return (
     <cartContext.Provider
       value={{
@@ -76,6 +102,8 @@ function CartContextProvider({ children }) {
         DeleteProduct,
         setLoaderIconForNav,
         loaderIconForNav,
+        updateCountProduct,
+        deleteAllProductsInCart,
       }}
     >
       {children}

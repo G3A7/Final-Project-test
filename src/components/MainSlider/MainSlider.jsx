@@ -37,17 +37,17 @@ function MainSlider() {
   };
   return (
     <>
-      <div className="row bg-slate-800 ">
-        <div className="w-2/3">
+      <div className="row  ">
+        <div className="w-2/3 ">
           <Slider {...settings}>
-            <img src={slide1} className=" sm:h-[400px] w-full " alt="" />
-            <img src={slide2} className=" sm:h-[400px] w-full " alt="" />
-            <img src={slide3} className=" sm:h-[400px] w-full " alt="" />
+            <img src={slide1} className="h-[200px] sm:h-[400px] w-full " alt="" />
+            <img src={slide2} className="h-[200px] sm:h-[400px] w-full " alt="" />
+            <img src={slide3} className="h-[200px] sm:h-[400px] w-full " alt="" />
           </Slider>
         </div>
         <div className="w-1/3">
-          <img src={img1} className=" sm:h-[200px] w-full block" alt="" />
-          <img src={img2} className=" sm:h-[200px] w-full block" alt="" />
+          <img src={img1} className=" h-[100px] sm:h-[200px] w-full block" alt="" />
+          <img src={img2} className=" h-[100px] sm:h-[200px] w-full block" alt="" />
         </div>
       </div>
     </>

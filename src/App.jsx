@@ -14,6 +14,9 @@ import TokenContextProvider from "./context/TokenContextProvider";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import ProductDetails from "./components/ProductDetails/ProductDetails";
 import CartContextProvider from "./context/CartContextProvider";
+import Order from "./components/Order/Order";
+import WishList from "./components/WishList/WishList";
+import WishListContextProvider from "./context/WishListContextProvider";
 function App() {
   const router = createBrowserRouter([
     {
@@ -30,7 +33,7 @@ function App() {
           ),
         },
         {
-          path: "/home",
+          path: "/",
           element: (
             <ProtectedRoute>
               <Home />
@@ -50,7 +53,7 @@ function App() {
           element: <Brands />,
         },
         {
-          path: "/categories",
+          path: "/category",
           element: (
             <ProtectedRoute>
               <Categories />
@@ -81,14 +84,22 @@ function App() {
             </ProtectedRoute>
           ),
         },
-        // {
-        //   path: "/fav",
-        //   element: (
-        //     <ProtectedRoute>
-        //       <Cart />
-        //     </ProtectedRoute>
-        //   ),
-        // },
+        {
+          path: "/wishList",
+          element: (
+            <ProtectedRoute>
+              <WishList />
+            </ProtectedRoute>
+          ),
+        },
+        {
+          path: "/orders",
+          element: (
+            <ProtectedRoute>
+              <Order />
+            </ProtectedRoute>
+          ),
+        },
         {
           path: "*",
           element: <NotFound />,
@@ -99,8 +110,10 @@ function App() {
   return (
     <TokenContextProvider>
       <CartContextProvider>
-        <RouterProvider router={router} />
-        <Toaster />
+        <WishListContextProvider>
+          <RouterProvider router={router} />
+          <Toaster />
+        </WishListContextProvider>
       </CartContextProvider>
     </TokenContextProvider>
   );

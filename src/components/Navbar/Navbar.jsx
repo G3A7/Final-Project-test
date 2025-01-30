@@ -5,10 +5,12 @@ import logo from "../../assets/freshcart-logo.svg";
 import { useContext, useRef, useState } from "react";
 import { tokenContext } from "../../context/TokenContextProvider";
 import { cartContext } from "../../context/CartContextProvider";
+import { wishListContext } from "../../context/WishListContextProvider";
 function Navbar() {
   const { numOfCartItems } = useContext(cartContext);
   let { token, setToken } = useContext(tokenContext);
   const { loaderIconForNav } = useContext(cartContext);
+  const { facLength, loaderFav } = useContext(wishListContext);
   // useEffect(() => {
   //   console.log(loaderIconForNav);
   //   // console.log("dasda");
@@ -55,8 +57,13 @@ function Navbar() {
             <>
               <div className="row  sm:order-4 items-center ">
                 <ul className="row items-center gap-2">
-                  <li className="cursor-pointer">
-                    <Link to={"/fav"} className="">
+                  <li className="cursor-pointer relative">
+                    <Link to={"/wishList"} className="">
+                      <span
+                        className={`absolute bg-green-600 rounded-full top-[-18px] right-[-5px] size-[25px] flex items-center justify-center text-white `}
+                      >
+                        {loaderFav ? <i className="fas fa-spin fa-spinner"></i> : facLength}
+                      </span>
                       <i
                         className="fa-regular fa-heart text-2xl
                   text-green-600"
@@ -112,7 +119,7 @@ function Navbar() {
                         ? "relative active pb-2"
                         : "relative after:absolute after:w-0 after:border-b-[3px] after:border-green-600 after:bg-green-600 after:bottom-0 after:left-0 hover:after:w-full after:transition-all after:duration-[.5s] pb-2 "
                     }
-                    to={"/home"}
+                    to={"/"}
                   >
                     Home
                   </NavLink>

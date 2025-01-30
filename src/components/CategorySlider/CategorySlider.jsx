@@ -33,8 +33,8 @@ function CategorySlider() {
     ],
   };
   const [categories, setCategories] = useState([]);
-  const [error, setError] = useState(null);
-  const [loader, setLoader] = useState(true);
+  // const [error, setError] = useState(null);
+  // const [loader, setLoader] = useState(true);
   const url = `https://ecommerce.routemisr.com/api/v1/categories/`;
   async function getCategories() {
     try {
