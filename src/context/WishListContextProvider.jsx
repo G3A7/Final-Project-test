@@ -18,6 +18,7 @@ function WishListContextProvider({ children }) {
   //   }, []);
 
   const { token } = useContext(tokenContext);
+
   const url = `https://ecommerce.routemisr.com/api/v1/wishlist`;
   const headers = {
     token,
@@ -66,6 +67,23 @@ function WishListContextProvider({ children }) {
     }
   }
 
+  // delete
+
+  async function deleteProductFromWishList(productId) {
+    try {
+      setLoaderFav(true);
+      const { data } = await axios.delete(`${url}/${productId}`, { headers });
+      console.log(data);
+      setFavLength(data.data.length);
+      return data;
+    } catch (error) {
+      console.log(error);
+      return error;
+    } finally {
+      setLoaderFav(false);
+    }
+  }
+
   return (
     <wishListContext.Provider
       value={{
@@ -75,6 +93,8 @@ function WishListContextProvider({ children }) {
         setLoaderFav,
         loaderFav,
         getAllWishList,
+        deleteProductFromWishList,
+        setProductsInWishList,
       }}
     >
       {children}

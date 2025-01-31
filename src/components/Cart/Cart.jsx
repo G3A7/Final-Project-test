@@ -1,8 +1,10 @@
 import { useContext, useEffect, useState } from "react";
 import { cartContext } from "../../context/CartContextProvider";
 // import img from "../../assets/PngItem_4021982.png";
+import imgEmptyCart from "../../assets/Animation - 1734929112513-CPg75eUg.gif";
 import { tokenContext } from "../../context/TokenContextProvider";
 import toast from "react-hot-toast";
+import { Link } from "react-router-dom";
 function Cart() {
   // const [model, setModel] = useState(false);
   const [cartDetails, setCartDetails] = useState(null);
@@ -23,12 +25,15 @@ function Cart() {
   const { token } = useContext(tokenContext);
   async function getCartProducts() {
     try {
+      setLoaderIconForNav(true);
       setLoader(true);
       const data = await getAllProductToCart();
       // console.log(data.data);
       setTotalPrice(data.data.totalCartPrice);
       // console.log(totalPrice);
       setCartDetails(data.data.products.length ? data.data.products : null);
+      setNumOfCartItems(data.numOfCartItems);
+      localStorage.setItem("numOfCartItems", JSON.stringify(data.numOfCartItems));
       setLoader(null);
       setError(null);
     } catch (error) {
@@ -36,6 +41,7 @@ function Cart() {
       setError(error.response.data.message);
     } finally {
       setLoader(false);
+      setLoaderIconForNav(false);
     }
   }
 
@@ -141,18 +147,29 @@ function Cart() {
     <>
       <h1 className="text-2xl font-bold  mb-5">Shoping Cart</h1>
       {loader ? (
-        error ? (
-          <div
-            className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
-            role="alert"
-          >
-            {error}
+        <div className="h-[300px] w-full   flex items-center justify-center ">
+          <i className="text-7xl text-green-500 fas fa-spin fa-spinner"></i>
+        </div>
+      ) : error ? (
+        <div
+          className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+          role="alert"
+        >
+          {error}
+        </div>
+      ) : !cartDetails ? (
+        <>
+          <div className="bg-navbar-bg p-5 flex flex-col items-center justify-center space-y-3">
+            <img src={imgEmptyCart} alt="" />
+            <p className="w-full text-center font-semibold text-lg">
+              <span className="text-green-700 font-bold"> Oops!</span> Your wishlist is empty. Start
+              adding products you love by clicking the button below!
+            </p>
+            <Link className="btn text-lg text-center font-semibold" to="/">
+              Back To Home
+            </Link>
           </div>
-        ) : (
-          <div className="h-[300px] w-full   flex items-center justify-center ">
-            <i className="text-7xl text-green-500 fas fa-spin fa-spinner"></i>
-          </div>
-        )
+        </>
       ) : cartDetails ? (
         <>
           <div className="relative overflow-x-auto shadow-md sm:rounded-lg">

@@ -2,7 +2,6 @@ import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { cartContext } from "../../context/CartContextProvider";
 import toast from "react-hot-toast";
-import { use } from "react";
 import { wishListContext } from "../../context/WishListContextProvider";
 
 /* eslint-disable react/prop-types */
@@ -17,8 +16,8 @@ function Product({ product }) {
       dataPromis,
       {
         loading: "Loading",
-        success: "Product added successfully to your cart ",
         error: "Error",
+        success: "Product added successfully to your cart ",
       },
       {
         position: "top-center",
@@ -37,6 +36,9 @@ function Product({ product }) {
         // });
         setLoader(null);
       }
+      // else {
+      //   throw new Error(data.respomse.data.message);
+      // }
     } catch (error) {
       console.log(error);
       toast.error("Product not added  to your cart", {

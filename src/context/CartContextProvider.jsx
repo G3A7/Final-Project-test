@@ -3,7 +3,8 @@
 import axios from "axios";
 import { createContext, useContext, useState } from "react";
 import { tokenContext } from "./TokenContextProvider";
-import { data } from "react-router-dom";
+// import { data } from "react-router-dom";
+// import toast from "react-hot-toast";
 export const cartContext = createContext("");
 
 function CartContextProvider({ children }) {
@@ -32,11 +33,14 @@ function CartContextProvider({ children }) {
       );
       setNumOfCartItems(data.numOfCartItems);
       localStorage.setItem("numOfCartItems", JSON.stringify(data.numOfCartItems));
-      // console.log(data);
+
       return data;
     } catch (error) {
       console.log(error);
-      return error;
+
+      throw error;
+      // the old . 😎
+      // return error;
     } finally {
       setLoaderIconForNav(false);
     }
@@ -49,7 +53,9 @@ function CartContextProvider({ children }) {
       return data;
     } catch (error) {
       console.log(error);
-      return error;
+      throw error;
+      // the old .
+      // return error;
     }
   }
 
@@ -62,7 +68,8 @@ function CartContextProvider({ children }) {
       return data;
     } catch (error) {
       console.log(error);
-      return data;
+      throw error;
+      // return data;
     }
   }
 
@@ -78,7 +85,8 @@ function CartContextProvider({ children }) {
       return data;
     } catch (error) {
       console.log(error);
-      return error;
+      throw error;
+      // return error;
     }
   }
 
@@ -88,7 +96,8 @@ function CartContextProvider({ children }) {
       return data;
     } catch (error) {
       console.log(error);
-      return error;
+      throw error;
+      // return error;
     }
   }
 
