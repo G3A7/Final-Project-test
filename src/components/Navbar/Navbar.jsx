@@ -55,7 +55,7 @@ function Navbar() {
 
           {token ? (
             <>
-              <div className="row  sm:order-4 items-center ">
+              <div className="row  md:order-4 items-center ">
                 <ul className="row items-center gap-2">
                   <li className="cursor-pointer relative">
                     <Link to={"/wishList"} className="">
@@ -90,7 +90,7 @@ function Navbar() {
                   onClick={() => {
                     Expand();
                   }}
-                  className="burgurIcon cursor-pointer block sm:hidden"
+                  className="burgurIcon cursor-pointer block md:hidden"
                 >
                   <i className="fa-solid fa-bars text-2xl"></i>
                 </div>
@@ -109,8 +109,8 @@ function Navbar() {
 
               <ul
                 ref={heightul}
-                className="w-full sm:gap-4 sm:text-lg sm:font-medium sm:w-fit sm:row  text-center py-5
-           space-y-2 sm:space-y-0"
+                className="w-full sm:gap-4 sm:text-lg sm:font-medium md:w-fit md:row  text-center py-5
+           space-y-2 md:space-y-0"
               >
                 <li className="">
                   <NavLink
@@ -168,7 +168,7 @@ function Navbar() {
                         ? "relative active pb-2 "
                         : "relative after:absolute after:w-0 after:border-b-[3px] after:border-green-600 after:bg-green-600 after:bottom-0 after:left-0 hover:after:w-full after:transition-all after:duration-[.5s] pb-2"
                     }
-                    to={"/orders"}
+                    to={"/allorders"}
                   >
                     Orders
                   </NavLink>

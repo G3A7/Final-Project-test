@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-catch */
 /* eslint-disable react-refresh/only-export-components */
 /* eslint-disable react/prop-types */
 import axios from "axios";
@@ -9,6 +10,7 @@ export const cartContext = createContext("");
 
 function CartContextProvider({ children }) {
   const [loaderIconForNav, setLoaderIconForNav] = useState(false);
+  const [cartId, setCartId] = useState(null);
   const [numOfCartItems, setNumOfCartItems] = useState(
     localStorage.getItem("numOfCartItems") ? localStorage.getItem("numOfCartItems") : 0
   );
@@ -19,6 +21,37 @@ function CartContextProvider({ children }) {
   const headers = {
     token,
   };
+
+  async function handlePayment(shippingAddress) {
+    try {
+      setLoaderIconForNav(true);
+      console.log(shippingAddress);
+      if (!shippingAddress) {
+        throw new Error("erororororo");
+      }
+      // https://ecommerce.routemisr.com/api/v1/orders/${cartId}
+      const { data } = await axios.post(
+        `https://ecommerce.routemisr.com/api/v1/orders/${cartId}`,
+        {
+          shippingAddress,
+        },
+        {
+          headers,
+        }
+      );
+
+      setNumOfCartItems(0);
+      localStorage.setItem("numOfCartItems", JSON.stringify(0));
+
+      return data;
+    } catch (error) {
+      // console.log(error);
+      throw error;
+    } finally {
+      setLoaderIconForNav(false);
+    }
+  }
+
   async function addToCart(productId) {
     try {
       setLoaderIconForNav(true);
@@ -49,7 +82,7 @@ function CartContextProvider({ children }) {
   async function getAllProductToCart() {
     try {
       const { data } = await axios.get(url, { headers });
-      // console.log(data);
+      setCartId(data.cartId);
       return data;
     } catch (error) {
       console.log(error);
@@ -113,6 +146,7 @@ function CartContextProvider({ children }) {
         loaderIconForNav,
         updateCountProduct,
         deleteAllProductsInCart,
+        handlePayment,
       }}
     >
       {children}

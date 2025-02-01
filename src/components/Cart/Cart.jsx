@@ -314,17 +314,23 @@ function Cart() {
             </table>
           </div>
           <div className="flex px-2 mt-5 justify-between items-center">
-            <button
-              onClick={() => {
-                // setModel(!model);
-                deleteProducts();
-              }}
-              data-modal-target="popup-modal"
-              data-modal-toggle="popup-modal"
-              className="btn bg-red-700 w-fit hover:bg-red-600 "
-            >
-              Clear
-            </button>
+            <div>
+              <button
+                onClick={() => {
+                  // setModel(!model);
+                  deleteProducts();
+                }}
+                data-modal-target="popup-modal"
+                data-modal-toggle="popup-modal"
+                className="btn bg-red-700 w-fit hover:bg-red-600 "
+              >
+                Clear
+              </button>
+
+              <Link to={"/checkout"} className="btn ms-3">
+                Check Out
+              </Link>
+            </div>
             <div className="text-xl font-mono">
               Total Price <span className="font-bold text-red-600  text-2xl">{totalPrice}</span> EGP
             </div>

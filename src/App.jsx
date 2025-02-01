@@ -17,6 +17,7 @@ import CartContextProvider from "./context/CartContextProvider";
 import Order from "./components/Order/Order";
 import WishList from "./components/WishList/WishList";
 import WishListContextProvider from "./context/WishListContextProvider";
+import Checkout from "./components/Checkout/Checkout";
 function App() {
   const router = createBrowserRouter([
     {
@@ -45,6 +46,14 @@ function App() {
           element: (
             <ProtectedRoute>
               <Products />
+            </ProtectedRoute>
+          ),
+        },
+        {
+          path: "/checkout",
+          element: (
+            <ProtectedRoute>
+              <Checkout />
             </ProtectedRoute>
           ),
         },
@@ -93,7 +102,7 @@ function App() {
           ),
         },
         {
-          path: "/orders",
+          path: "/allorders",
           element: (
             <ProtectedRoute>
               <Order />
