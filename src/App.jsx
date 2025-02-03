@@ -18,6 +18,9 @@ import Order from "./components/Order/Order";
 import WishList from "./components/WishList/WishList";
 import WishListContextProvider from "./context/WishListContextProvider";
 import Checkout from "./components/Checkout/Checkout";
+import ForegetPass from "./components/ForegetPass/ForegetPass";
+import ResetCode from "./components/ResetCode/ResetCode";
+import ResetPassword from "./components/ResetPassword/ResetPassword";
 function App() {
   const router = createBrowserRouter([
     {
@@ -107,6 +110,30 @@ function App() {
             <ProtectedRoute>
               <Order />
             </ProtectedRoute>
+          ),
+        },
+        {
+          path: "/forgetpass",
+          element: (
+            // <ProtectedRoute>
+            <ForegetPass />
+            // </ProtectedRoute>
+          ),
+        },
+        {
+          path: "/resetCode",
+          element: (
+            // <ProtectedRoute>
+            <ResetCode />
+            // </ProtectedRoute>
+          ),
+        },
+        {
+          path: "/resetPass",
+          element: (
+            // <ProtectedRoute>
+            <ResetPassword />
+            // </ProtectedRoute>
           ),
         },
         {

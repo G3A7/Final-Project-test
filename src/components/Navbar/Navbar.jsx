@@ -21,6 +21,8 @@ function Navbar() {
   function logoutFn() {
     localStorage.removeItem("token");
     setToken(null);
+    localStorage.setItem("fav", JSON.stringify([]));
+    localStorage.setItem("numOfCartItems", 0);
     navigate("/login");
   }
   const [expand, setExapnd] = useState(true);

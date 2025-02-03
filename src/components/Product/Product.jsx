@@ -3,9 +3,11 @@ import { Link } from "react-router-dom";
 import { cartContext } from "../../context/CartContextProvider";
 import toast from "react-hot-toast";
 import { wishListContext } from "../../context/WishListContextProvider";
+// import { tokenContext } from "../../context/TokenContextProvider";
 
 /* eslint-disable react/prop-types */
 function Product({ product }) {
+  // const { token } = useContext(tokenContext);
   const { addToCart } = useContext(cartContext);
   const { AddToWishList, productsInWishList } = useContext(wishListContext);
   const [loader, setLoader] = useState(false);
@@ -73,6 +75,19 @@ function Product({ product }) {
       setLoaderWishList(false);
     }
   }
+  //   عشان اول لما يفتح الموقع تجبله ال كام حاجه في ال cart
+  // async function getCartProducts() {
+  //   try {
+  //     const data = await getAllProductToCart();
+  //     setNumOfCartItems(data.numOfCartItems);
+  //     localStorage.setItem("numOfCartItems", JSON.stringify(data.numOfCartItems));
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }
+  // useEffect(() => {
+  //   token && getCartProducts();
+  // }, [token]);
 
   return (
     //             px-4 | p-2

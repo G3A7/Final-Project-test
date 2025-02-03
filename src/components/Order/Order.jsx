@@ -16,7 +16,7 @@ function Order() {
       const { id } = jwtDecode(token);
       const { data } = await axios.get(`https://ecommerce.routemisr.com/api/v1/orders/user/${id}`);
       setOrders(data);
-      console.log(orders);
+      // console.log(orders);
       setError(null);
     } catch (error) {
       console.log(error);
@@ -31,7 +31,7 @@ function Order() {
   }, [token]);
   return (
     <div>
-      <h1>All Orders</h1>
+      <h1 className="text-3xl mb-5 ms-2 font-semibold text-green-600">All Orders : </h1>
 
       <section>
         {loader ? (
@@ -47,11 +47,11 @@ function Order() {
             {error}
           </div>
         ) : orders?.length == 0 ? (
-          <div className="bg-navbar-bg p-5 flex flex-col items-center justify-center space-y-3">
+          <div className="bg-navbar-bg p-5 min-h-[50vh] flex flex-col items-center justify-center space-y-3">
             <img src={ingEmptyFav} alt="" />
             <p className="w-full text-center font-semibold text-lg">
               <span className="text-green-700 font-bold"> Oops!</span> Your Order is empty. Start
-              adding products  by clicking the button below!
+              adding products by clicking the button below!
             </p>
             <Link className="btn text-lg text-center font-semibold" to="/">
               Back To Home
@@ -69,10 +69,17 @@ function Order() {
                   <div>
                     <button
                       className={`btn w-fit ${
-                        !order.isPaid ? "bg-red-600" : "bg-green-600"
-                      } mx-2 hover:bg-red-600`}
+                        !order.isPaid
+                          ? "bg-red-600 hover:bg-red-600"
+                          : "bg-green-600 hover:bg-green-600"
+                      } mx-2 `}
                     >
-                      <i className="fa-solid fa-circle-xmark"></i> {!order.isPaid ? "Not" : ""}Paid
+                      {!order.isPaid ? (
+                        <i className="fa-solid fa-circle-xmark me-2"></i>
+                      ) : (
+                        <i className="fa-solid fa-check me-2"></i>
+                      )}
+                      {!order.isPaid ? "Not" : ""}Paid
                     </button>
                     <button className="btn  w-fit">
                       {!order.isDelivered ? (

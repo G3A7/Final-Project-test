@@ -3,9 +3,10 @@ import cart from "../../assets/favicon-8OdaHze_.png";
 import { useFormik } from "formik";
 import { useContext, useRef, useState } from "react";
 import * as Yup from "yup";
-import { toast, ToastContainer } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+// import { toast, ToastContainer } from "react-toastify";
+import { Link, useNavigate } from "react-router-dom";
 import { tokenContext } from "../../context/TokenContextProvider";
+import toast from "react-hot-toast";
 function Login() {
   const { setToken } = useContext(tokenContext);
   const [show, setShow] = useState(false);
@@ -31,13 +32,13 @@ function Login() {
     toast.promise(
       res,
       {
-        pending: "wait",
+        loading: "wait",
         success: "Account Created Successfully",
-        error: "Erro",
+        error: (data) => data.response.data.message,
       },
       {
         position: "top-center",
-        autoClose: 1000,
+        // autoClose: 1000,
       }
     );
     try {
@@ -47,16 +48,14 @@ function Login() {
           localStorage.setItem("token", data.token);
           setToken(data.token);
           navigate("/");
-        }, 700);
+        }, 2000);
       }
     } catch (e) {
       console.log(e);
       if (e.status == 409) {
-        toast.error(`${e.response.data.message} 😎`, {
-          pauseOnHover: false,
-        });
+        toast.error(`${e.response.data.message} 😎`);
       } else if (e.status == 401) {
-        toast.error(`${e.response.data.errors.msg} 😎`);
+        toast.error(`${e.response.data.message} 😎`);
       }
     } finally {
       setLoader(null);
@@ -154,9 +153,12 @@ function Login() {
               {loader ? <i className="fa fa-spin fa-spinner"></i> : "Register"}
             </button>
           </div>
+          <Link to="/forgetpass" className="underline mt-3 block text-green-700">
+            Forget Passwor
+          </Link>
         </form>
       </div>
-      <ToastContainer />
+      {/* <ToastContainer /> */}
     </>
   );
 }

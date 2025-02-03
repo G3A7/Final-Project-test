@@ -115,7 +115,7 @@ function WishList() {
   }, [token]);
 
   return (
-    <div>
+    <div className="">
       <h1 className="text-2xl">
         {/* <i class="fa-solid fa-heart"></i> */}
         My WishList <i className="fas fa-heart fa-beat text-2xl text-green-600"></i>
@@ -135,7 +135,7 @@ function WishList() {
               {Error}
             </div>
           ) : productsWishlist?.length == 0 ? (
-            <div className="bg-navbar-bg p-5 flex flex-col items-center justify-center space-y-3">
+            <div className="bg-navbar-bg p-5 flex flex-col min-h-[50vh] items-center justify-center space-y-3">
               <img src={ingEmptyFav} alt="" />
               <p className="w-full text-center font-semibold text-lg">
                 <span className="text-green-700 font-bold"> Oops!</span> Your wishlist is empty.

@@ -159,7 +159,7 @@ function Cart() {
         </div>
       ) : !cartDetails ? (
         <>
-          <div className="bg-navbar-bg p-5 flex flex-col items-center justify-center space-y-3">
+          <div className="bg-navbar-bg p-5 flex flex-col min-h-[50vh] items-center justify-center space-y-3">
             <img src={imgEmptyCart} alt="" />
             <p className="w-full text-center font-semibold text-lg">
               <span className="text-green-700 font-bold"> Oops!</span> Your wishlist is empty. Start
@@ -313,7 +313,7 @@ function Cart() {
               </tbody>
             </table>
           </div>
-          <div className="flex px-2 mt-5 justify-between items-center">
+          <div className="flex flex-wrap px-2 mt-5 justify-between items-center">
             <div>
               <button
                 onClick={() => {

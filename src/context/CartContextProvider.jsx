@@ -22,28 +22,51 @@ function CartContextProvider({ children }) {
     token,
   };
 
-  async function handlePayment(shippingAddress) {
+  // console.log(`https://final-project-test-ashen.vercel.app/`.substr(0,`https://final-project-test-ashen.vercel.app/`.lastIndexOf('/')))
+  // location
+
+  async function handlePayment(shippingAddress, online) {
     try {
       setLoaderIconForNav(true);
-      console.log(shippingAddress);
       if (!shippingAddress) {
         throw new Error("erororororo");
       }
+      // https://ecommerce.routemisr.com/api/v1/orders/checkout-session/66c91634ed0dc0016c217bb3?url=http://localhost:3000
       // https://ecommerce.routemisr.com/api/v1/orders/${cartId}
-      const { data } = await axios.post(
-        `https://ecommerce.routemisr.com/api/v1/orders/${cartId}`,
-        {
-          shippingAddress,
-        },
-        {
-          headers,
-        }
-      );
 
-      setNumOfCartItems(0);
-      localStorage.setItem("numOfCartItems", JSON.stringify(0));
+      let urlOnline = `https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cartId}?url=${location.href.slice(
+        0,
+        location.href.lastIndexOf("/")
+      )}`;
+      let urlOffLine = `https://ecommerce.routemisr.com/api/v1/orders/${cartId}`;
 
-      return data;
+      if (online) {
+        const { data } = await axios.post(
+          urlOnline,
+          {
+            shippingAddress,
+          },
+          {
+            headers,
+          }
+        );
+        setNumOfCartItems(0);
+        localStorage.setItem("numOfCartItems", JSON.stringify(0));
+        return data;
+      } else {
+        const { data } = await axios.post(
+          urlOffLine,
+          {
+            shippingAddress,
+          },
+          {
+            headers,
+          }
+        );
+        setNumOfCartItems(0);
+        localStorage.setItem("numOfCartItems", JSON.stringify(0));
+        return data;
+      }
     } catch (error) {
       // console.log(error);
       throw error;
