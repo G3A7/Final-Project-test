@@ -89,7 +89,7 @@ function App() {
           ),
         },
         {
-          path: "/products/:id/:idC",
+          path: "/productsdetails/:id/:idC",
           element: (
             <ProtectedRoute>
               <ProductDetails />

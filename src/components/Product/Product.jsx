@@ -114,7 +114,7 @@ function Product({ product }) {
               ></i>
             )}
           </div>
-          <Link title="details" to={`/products/${product.id}/${product.category._id}`}>
+          <Link title="details" to={`/productsdetails/${product.id}/${product.category._id}`}>
             <div className="cursor-pointer mt-6">
               <i className="fa-solid text-xl text-green-600 fa-eye"></i>
             </div>
@@ -135,7 +135,7 @@ function Product({ product }) {
           </div>
         </div>
         <div className="mb-2">
-          <img src={product.imageCover} alt="" className="w-full h-[300px] object-cover block" />
+          <img src={product.imageCover} alt="" className="w-full  object-cover block" />
         </div>
         <h3 className="text-green-600">{product.category.name}</h3>
         <h4 className="truncate font-semibold text-lg">{product.title}</h4>
