@@ -1,10 +1,10 @@
-import img from "../../assets/error.svg";
+// import img from "../../assets/error.svg";
 
 function NotFound() {
   return (
-    <div className="h-screen">
-      <img src={img} className="w-full block" alt="" />
-    </div>
+    <div
+      className={`min-h-[100vh]  bg-[url(./src/assets/error.svg)] bg-no-repeat bg-center bg-contain`}
+    ></div>
   );
 }
 

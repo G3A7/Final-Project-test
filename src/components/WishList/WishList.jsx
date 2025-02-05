@@ -7,6 +7,7 @@ import { tokenContext } from "../../context/TokenContextProvider";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
 import { cartContext } from "../../context/CartContextProvider";
+import { Helmet } from "react-helmet";
 
 function WishList() {
   const { getAllWishList, deleteProductFromWishList, setProductsInWishList } =
@@ -116,6 +117,10 @@ function WishList() {
 
   return (
     <div className="">
+      <Helmet>
+        <title>WishList</title>
+        <meta name="description" content="Fresh Cart Products" />
+      </Helmet>
       <h1 className="text-2xl">
         {/* <i class="fa-solid fa-heart"></i> */}
         My WishList <i className="fas fa-heart fa-beat text-2xl text-green-600"></i>

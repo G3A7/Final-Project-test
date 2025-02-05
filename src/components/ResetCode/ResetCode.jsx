@@ -7,6 +7,7 @@ import * as Yup from "yup";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import img from "../../assets/favicon-8OdaHze_.png";
+import { Helmet } from "react-helmet";
 
 function ResetCode() {
   const navigate = useNavigate();
@@ -56,6 +57,9 @@ function ResetCode() {
   }
   return (
     <div>
+        <Helmet>
+        <title>Reset Code</title>
+      </Helmet>
       <div className="min-h-[50vh]">
         <form
           onSubmit={formik.handleSubmit}

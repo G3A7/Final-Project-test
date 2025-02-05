@@ -7,6 +7,7 @@ import * as Yup from "yup";
 import { Link, useNavigate } from "react-router-dom";
 import { tokenContext } from "../../context/TokenContextProvider";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet";
 function Login() {
   const { setToken } = useContext(tokenContext);
   const [show, setShow] = useState(false);
@@ -69,6 +70,9 @@ function Login() {
 
   return (
     <>
+      <Helmet>
+        <title>Login</title>
+      </Helmet>
       <div>
         <h2 className="text-center mb-5">
           <span className="text-2xl text-green-700 font-bold">Login To</span>

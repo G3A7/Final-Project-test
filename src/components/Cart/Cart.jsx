@@ -5,6 +5,9 @@ import imgEmptyCart from "../../assets/Animation - 1734929112513-CPg75eUg.gif";
 import { tokenContext } from "../../context/TokenContextProvider";
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
+import img from "../../assets/favicon-8OdaHze_.png";
+
 function Cart() {
   // const [model, setModel] = useState(false);
   const [cartDetails, setCartDetails] = useState(null);
@@ -145,6 +148,11 @@ function Cart() {
 
   return (
     <>
+      <Helmet>
+        <title>cart</title>
+        <meta name="description" content="Fresh Cart Cart" />
+        <link rel="icon" href={img} type="image/png" />
+      </Helmet>
       <h1 className="text-2xl font-bold  mb-5">Shoping Cart</h1>
       {loader ? (
         <div className="h-[300px] w-full   flex items-center justify-center ">

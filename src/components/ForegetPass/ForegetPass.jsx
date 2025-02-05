@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import img from "../../assets/favicon-8OdaHze_.png";
 import { useFormik } from "formik";
+import { Helmet } from "react-helmet";
 
 function ForegetPass() {
   const navigate = useNavigate();
@@ -53,6 +54,9 @@ function ForegetPass() {
 
   return (
     <div className="min-h-[50vh]">
+      <Helmet>
+        <title>Forget Password</title>
+      </Helmet>
       <form
         onSubmit={formik.handleSubmit}
         className=" sm:max-w-md mx-auto  relative py-5 shadow-md  sm:py-6 px-2 rounded-md "

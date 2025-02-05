@@ -6,6 +6,7 @@ import { useContext, useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { tokenContext } from "../../context/TokenContextProvider";
+import { Helmet } from "react-helmet";
 
 function ResetPassword() {
   const { setToken } = useContext(tokenContext);
@@ -65,6 +66,9 @@ function ResetPassword() {
 
   return (
     <div>
+        <Helmet>
+        <title>Reset Password</title>
+      </Helmet>
       <div className="min-h-[50vh]">
         <form
           onSubmit={formik.handleSubmit}

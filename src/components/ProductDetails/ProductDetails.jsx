@@ -6,6 +6,8 @@ import RelatedProducts from "../RelatedProducts/RelatedProducts";
 import Slider from "react-slick";
 import { cartContext } from "../../context/CartContextProvider";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet";
+import img from "../../assets/favicon-8OdaHze_.png";
 
 function ProductDetails() {
   const { addToCart } = useContext(cartContext);
@@ -82,6 +84,7 @@ function ProductDetails() {
       setLoader(null);
     }
   }
+  console.log(product);
   useEffect(() => {
     getSpecificproduct();
     window.scroll({
@@ -91,8 +94,13 @@ function ProductDetails() {
   }, [id]);
   return (
     <>
+      <Helmet>
+        <title>{product?.title}</title>
+        <meta name="description" content={product?.description} />
+        <link rel="icon" href={img} type="image/png" />
+      </Helmet>
       <div>
-        <h1 className="text-2xl font-semibold ps-4 mb-5"> Products Details</h1>
+        {/* <h1 className="text-2xl font-semibold ps-4 mb-5"> Products Details</h1> */}
         {/* {loader && (
           <div className="h-[300px] w-full bg-slate-800  flex items-center justify-center ">
             <i className="text-7xl text-green-500 fas fa-spin fa-spinner"></i>
@@ -111,16 +119,24 @@ function ProductDetails() {
           </div>
         ) : (
           product && (
-            <div className="row items-center ">
-              <div className="w-full mb-5 md:mb-0 md:w-4/12">
+            <div className="row items-center bg-navbar-bg  mb-5">
+              <div className="w-full mb-5  md:mb-0 md:w-4/12">
                 <Slider {...settings}>
-                  {product?.images?.map((src, i) => {
-                    return (
-                      <div key={i}>
-                        <img src={src} alt="" className="w-full object-cover" />
-                      </div>
-                    );
-                  })}
+                  {product?.images.length == 1
+                    ? new Array(10).fill(product?.images[0])?.map((src, i) => {
+                        return (
+                          <div className=" h-[350px]  " key={i}>
+                            <img src={src} alt="" className="w-full h-[100%] object-cover" />
+                          </div>
+                        );
+                      })
+                    : product?.images?.map((src, i) => {
+                        return (
+                          <div className=" h-[350px]  " key={i}>
+                            <img src={src} alt="" className="w-full h-[100%] object-cover" />
+                          </div>
+                        );
+                      })}
                 </Slider>
                 {/* <img src={product?.imageCover} alt="" className="w-full" /> */}
               </div>

@@ -5,6 +5,7 @@ import { useRef, useState } from "react";
 import * as Yup from "yup";
 import { toast, ToastContainer } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
 // import { tokenContext } from "../../context/TokenContextProvider";
 function Register() {
   // const { setToken } = useContext(tokenContext);
@@ -80,6 +81,9 @@ function Register() {
 
   return (
     <>
+      <Helmet>
+        <title>Register</title>
+      </Helmet>
       <div>
         <h2 className="text-center mb-5">
           <span className="text-2xl text-green-700 font-bold">Register To</span>

@@ -4,6 +4,7 @@ import { useContext, useEffect, useState } from "react";
 import { tokenContext } from "../../context/TokenContextProvider";
 import ingEmptyFav from "../../assets/Animation - 1734995792926-BDjvBpLc.gif";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 function Order() {
   const { token } = useContext(tokenContext);
@@ -31,6 +32,11 @@ function Order() {
   }, [token]);
   return (
     <div>
+      <Helmet>
+        <title>All Orders</title>
+        <meta name="description" content="Fresh Cart Orders" />
+        {/* <link rel="icon" href={img} type="image/png" /> */}
+      </Helmet>
       <h1 className="text-3xl mb-5 ms-2 font-semibold text-green-600">All Orders : </h1>
 
       <section>

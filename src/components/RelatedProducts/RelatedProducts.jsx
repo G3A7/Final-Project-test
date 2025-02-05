@@ -33,7 +33,7 @@ function RelatedProducts() {
   }, [idC]);
   return (
     <div>
-      <h1 className="text-2xl ps-4 font-semibold">Recent Products</h1>
+      {/* <h1 className="text-2xl ps-4 font-semibold">Related Products</h1> */}
       <div className="row justify-center">
         {loader && (
           <div className="h-[300px] w-full flex items-center justify-center ">
