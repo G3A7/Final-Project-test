@@ -7,9 +7,10 @@ import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import img from "../../assets/favicon-8OdaHze_.png";
+import ConfirmModal from "../Dialog/ConfirmModal";
 
 function Cart() {
-  // const [model, setModel] = useState(false);
+  // const [deleteOk, setDeleteOk] = useState(false);
   const [cartDetails, setCartDetails] = useState(null);
   const [totalPrice, setTotalPrice] = useState(0);
   const [loader, setLoader] = useState(true);
@@ -153,7 +154,9 @@ function Cart() {
         <meta name="description" content="Fresh Cart Cart" />
         <link rel="icon" href={img} type="image/png" />
       </Helmet>
-      <h1 className="text-2xl font-bold  mb-5">Shoping Cart</h1>
+      <h1 className="text-2xl font-bold text-green-500 mb-5">
+        <i className="fa-solid fa-cart-plus animate-bounce"></i> Shoping Cart
+      </h1>
       {loader ? (
         <div className="h-[300px] w-full   flex items-center justify-center ">
           <i className="text-7xl text-green-500 fas fa-spin fa-spinner"></i>
@@ -323,7 +326,7 @@ function Cart() {
           </div>
           <div className="flex flex-wrap px-2 mt-5 justify-between items-center">
             <div>
-              <button
+              {/* <button
                 onClick={() => {
                   // setModel(!model);
                   deleteProducts();
@@ -333,8 +336,9 @@ function Cart() {
                 className="btn bg-red-700 w-fit hover:bg-red-600 "
               >
                 Clear
-              </button>
+              </button> */}
 
+              <ConfirmModal deleteProducts={deleteProducts} />
               <Link to={"/checkout"} className="btn ms-3">
                 Check Out
               </Link>

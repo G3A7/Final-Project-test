@@ -121,7 +121,7 @@ function WishList() {
         <title>WishList</title>
         <meta name="description" content="Fresh Cart Products" />
       </Helmet>
-      <h1 className="text-2xl">
+      <h1 className="text-2xl font-bold text-green-500 ms-4">
         {/* <i class="fa-solid fa-heart"></i> */}
         My WishList <i className="fas fa-heart fa-beat text-2xl text-green-600"></i>
       </h1>

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Product from "../Product/Product";
 import { Helmet } from "react-helmet";
 import img from "../../assets/favicon-8OdaHze_.png";
+import { AnimatePresence, motion } from "framer-motion";
 
 function Products() {
   // const [isOpen, setIsOpen] = useState(false);
@@ -102,25 +103,34 @@ function Products() {
           </div>
         )}
         {/* /loader */}
-        {error ? (
-          <div
-            className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
-            role="alert"
-          >
-            {error}
-          </div>
-        ) : emptyProductFilter ? (
-          <div
-            className="p-4 mb-4 h-[50px]  w-full text-center text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
-            role="alert"
-          >
-            No Products with this Name 🙄
-          </div>
-        ) : (
-          (productFilter || products)?.map((e) => {
-            return <Product key={e.id} product={e} />;
-          })
-        )}
+        <AnimatePresence>
+          {error ? (
+            <div
+              className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+              role="alert"
+            >
+              {error}
+            </div>
+          ) : emptyProductFilter ? (
+            <div
+              className="p-4 mb-4 h-[50px]  w-full text-center text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+              role="alert"
+            >
+              No Products with this Name 🙄
+            </div>
+          ) : (
+            (productFilter || products)?.map((e) => {
+              return (
+                <motion.div
+                  className="p-2 w-full sm:w-6/12 md:w-4/12 lg:w-3/12"
+                  key={e.id + (productFilter ? "filtered" : "")}
+                >
+                  <Product product={e} />
+                </motion.div>
+              );
+            })
+          )}
+        </AnimatePresence>
       </div>
 
       {/* <div className="flex items-center justify-center gap-4">

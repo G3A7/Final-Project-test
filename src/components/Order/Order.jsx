@@ -37,7 +37,9 @@ function Order() {
         <meta name="description" content="Fresh Cart Orders" />
         {/* <link rel="icon" href={img} type="image/png" /> */}
       </Helmet>
-      <h1 className="text-3xl mb-5 ms-2 font-semibold text-green-600">All Orders : </h1>
+      <h1 className="text-3xl mb-5 ms-2 font-semibold text-green-600">
+        <i className="fa-solid fa-box text-4xl animate-bounce"></i> All Orders{" "}
+      </h1>
 
       <section>
         {loader ? (

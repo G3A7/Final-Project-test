@@ -96,10 +96,10 @@ function ForegetPass() {
         )}
         <div>
           <button
-            disabled={!(formik.dirty && formik.isValid)}
+            disabled={!(formik.dirty && formik.isValid) || loader}
             className={`disabled:cursor-not-allowed btn`}
           >
-            {loader && <i className="fas fa-spin fa-spinner me-2"></i>} Send
+            {loader ? <i className="fas fa-spin fa-spinner me-2"></i> : "send"}
           </button>
         </div>
       </form>

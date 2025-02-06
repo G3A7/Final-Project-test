@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Product from "../Product/Product";
-
+import { AnimatePresence, motion } from "framer-motion";
 function RelatedProducts() {
   const [products, setProducts] = useState([]);
   const [loader, setLoader] = useState(true);
@@ -35,24 +35,30 @@ function RelatedProducts() {
     <div>
       {/* <h1 className="text-2xl ps-4 font-semibold">Related Products</h1> */}
       <div className="row justify-center">
-        {loader && (
-          <div className="h-[300px] w-full flex items-center justify-center ">
-            <i className="text-7xl text-green-500 fas fa-spin fa-spinner"></i>
-          </div>
-        )}
-        {error ? (
-          <div
-            className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
-            role="alert"
-          >
-            {error}
-          </div>
-        ) : (
-          products &&
-          products?.map((e) => {
-            return <Product key={e.id} product={e} />;
-          })
-        )}
+        <AnimatePresence>
+          {loader && (
+            <div className="h-[300px] w-full flex items-center justify-center ">
+              <i className="text-7xl text-green-500 fas fa-spin fa-spinner"></i>
+            </div>
+          )}
+          {error ? (
+            <div
+              className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+              role="alert"
+            >
+              {error}
+            </div>
+          ) : (
+            products &&
+            products?.map((e) => {
+              return (
+                <motion.div className="p-2 w-full sm:w-6/12 md:w-4/12 lg:w-3/12" key={e.id}>
+                  <Product product={e} />
+                </motion.div>
+              );
+            })
+          )}
+        </AnimatePresence>
       </div>
     </div>
   );

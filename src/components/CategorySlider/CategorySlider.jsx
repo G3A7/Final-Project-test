@@ -33,16 +33,20 @@ function CategorySlider() {
     ],
   };
   const [categories, setCategories] = useState([]);
+  const [loader, setLoader] = useState(false);
   // const [error, setError] = useState(null);
   // const [loader, setLoader] = useState(true);
   const url = `https://ecommerce.routemisr.com/api/v1/categories/`;
   async function getCategories() {
     try {
+      setLoader(true);
       const { data } = await axios.get(url);
       setCategories(data.data);
       // console.log(categories);
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoader(false);
     }
   }
   useEffect(() => {
@@ -52,20 +56,26 @@ function CategorySlider() {
   return (
     <div className="my-[25px]">
       {/* <h1 className="font-semibold text-2xl ps-6 mb-2">Category Slider</h1> */}
-      <Slider {...settings}>
-        {categories.map((e) => {
-          return (
-            <div key={e._id}>
-              <img
-                src={e.image}
-                className="w-full cursor-pointer  block h-[255px] object-cover"
-                alt=""
-              />
-              <h2>{e.name}</h2>
-            </div>
-          );
-        })}
-      </Slider>
+      {loader ? (
+        <div className="flex items-center justify-center min-h-[250px]">
+          <i className="fas fa-spin fa-spinner text-green-600 text-6xl"></i>
+        </div>
+      ) : (
+        <Slider {...settings}>
+          {categories.map((e) => {
+            return (
+              <div key={e._id}>
+                <img
+                  src={e.image}
+                  className="w-full cursor-pointer  block h-[255px] object-cover"
+                  alt=""
+                />
+                <h2>{e.name}</h2>
+              </div>
+            );
+          })}
+        </Slider>
+      )}
     </div>
   );
 }

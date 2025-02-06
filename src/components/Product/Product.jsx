@@ -4,6 +4,7 @@ import { cartContext } from "../../context/CartContextProvider";
 import toast from "react-hot-toast";
 import { wishListContext } from "../../context/WishListContextProvider";
 // import { tokenContext } from "../../context/TokenContextProvider";
+import { motion } from "framer-motion";
 
 /* eslint-disable react/prop-types */
 function Product({ product }) {
@@ -91,7 +92,12 @@ function Product({ product }) {
 
   return (
     //             px-4 | p-2
-    <div className="p-2 w-full sm:w-6/12 md:w-4/12 lg:w-3/12">
+    <motion.div
+    initial={{ scale: 0.8, opacity: 0 }}  // العنصر يبدأ بحجم أصغر وشفافية أقل
+    animate={{ scale: 1, opacity: 1 }}   // العنصر يكبر ليصل للحجم الطبيعي ويصبح مرئيًا
+    exit={{ scale: 0.8, opacity: 0 }}    // عند الخروج، يعود الحجم للانكماش مع الشفافية
+    transition={{ duration: 0.4, ease: "easeOut" }}
+    >
       <div className=" p-2 shadow-lg   group/parent rounded-md relative">
         <div className="group-hover/parent:opacity-100 group-hover/parent:visible  invisible  group-hover/parent:left-0 transition-all absolute flex flex-col w-[50px] h-[45%] bg-white opacity-0 shadow-md top-[15px] left-[-50px] text-center">
           <div
@@ -146,7 +152,7 @@ function Product({ product }) {
           </p>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

@@ -6,6 +6,7 @@ import { useContext, useRef, useState } from "react";
 import { tokenContext } from "../../context/TokenContextProvider";
 import { cartContext } from "../../context/CartContextProvider";
 import { wishListContext } from "../../context/WishListContextProvider";
+import ConfirmModalLogOut from "../LogOutDialog/ConfirmModalLogOut";
 function Navbar() {
   const { numOfCartItems } = useContext(cartContext);
   let { token, setToken } = useContext(tokenContext);
@@ -21,8 +22,10 @@ function Navbar() {
   function logoutFn() {
     localStorage.removeItem("token");
     setToken(null);
-    localStorage.setItem("fav", JSON.stringify([]));
-    localStorage.setItem("numOfCartItems", 0);
+    // علي حسب .
+    // localStorage.setItem("fav", JSON.stringify([]));
+    // localStorage.setItem("numOfCartItems", 0);
+    
     navigate("/login");
   }
   const [expand, setExapnd] = useState(true);
@@ -98,14 +101,15 @@ function Navbar() {
                 </div>
 
                 <div className="ms-2 sm:ms-4">
-                  <button
+                  <ConfirmModalLogOut logoutFn={logoutFn} />
+                  {/* <button
                     onClick={() => {
                       logoutFn();
                     }}
                     className="bg-red-600 p-1 rounded-md text-white hover:bg-red-700"
                   >
                     <i className="fa-solid fa-right-from-bracket text-xl"></i>
-                  </button>
+                  </button> */}
                 </div>
               </div>
 
