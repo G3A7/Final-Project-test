@@ -190,13 +190,7 @@ function App() {
           index: true,
           element: (
             <ProtectedRoute>
-              <Suspense
-                fallback={
-                  <div className="fixed top-0 left-0 bg-black bg-opacity-80 bottom-0 right-0 flex justify-center items-center">
-                    <i className="fas fa-spin fa-spinner text-green-600 text-8xl"></i>
-                  </div>
-                }
-              >
+              <Suspense>
                 <Home />
               </Suspense>
             </ProtectedRoute>
