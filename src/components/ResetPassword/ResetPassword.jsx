@@ -66,7 +66,7 @@ function ResetPassword() {
 
   return (
     <div>
-        <Helmet>
+      <Helmet>
         <title>Reset Password</title>
       </Helmet>
       <div className="min-h-[50vh]">
@@ -83,7 +83,7 @@ function ResetPassword() {
           <div className="size-[50px] m-auto">
             <img src={img} alt="" className="w-full h-full object-contain " />
           </div>
-          <h1 className="text-center font-semibold text-2xl">Forget Password?:</h1>
+          <h1 className="text-center font-semibold text-2xl dark:text-white">Reset Password?:</h1>
           <p className="text-center text-gray-600 ">Enter your email address</p>
           <div className="relative z-0 mb-5">
             <input

@@ -8,7 +8,7 @@ import img7 from "../../assets/Animation - 1734929967700-LxrRZL4f.gif";
 
 function Footer() {
   return (
-    <div className="bg-navbar-bg py-5 ">
+    <div className="bg-navbar-bg py-5 dark:bg-slate-900 dark:text-white ">
       <div className="container p-3">
         <div className="border-b-2 border-gray-600 py-2 ">
           <h1 className="text-xl">Get the FreshCart app</h1>

@@ -70,7 +70,7 @@ function CategorySlider() {
                   className="w-full cursor-pointer  block h-[255px] object-cover"
                   alt=""
                 />
-                <h2>{e.name}</h2>
+                <h2 className="text-green-600 ">{e.name}</h2>
               </div>
             );
           })}

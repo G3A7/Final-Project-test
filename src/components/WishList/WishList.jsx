@@ -134,13 +134,13 @@ function WishList() {
             </div>
           ) : Error ? (
             <div
-              className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+              className="p-4 mb-4 text-sm text-red-800 rounded-lg  bg-red-50 dark:bg-gray-800 dark:text-red-400"
               role="alert"
             >
               {Error}
             </div>
           ) : productsWishlist?.length == 0 ? (
-            <div className="bg-navbar-bg p-5 flex flex-col min-h-[50vh] items-center justify-center space-y-3">
+            <div className="bg-navbar-bg p-5 flex dark:text-white dark:bg-slate-800 flex-col min-h-[50vh] items-center justify-center space-y-3">
               <img src={ingEmptyFav} alt="" />
               <p className="w-full text-center font-semibold text-lg">
                 <span className="text-green-700 font-bold"> Oops!</span> Your wishlist is empty.

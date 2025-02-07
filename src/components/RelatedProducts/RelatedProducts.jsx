@@ -34,7 +34,7 @@ function RelatedProducts() {
   return (
     <div>
       {/* <h1 className="text-2xl ps-4 font-semibold">Related Products</h1> */}
-      <div className="row justify-center">
+      <div className="row justify-center ">
         <AnimatePresence>
           {loader && (
             <div className="h-[300px] w-full flex items-center justify-center ">

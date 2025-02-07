@@ -93,13 +93,13 @@ function Product({ product }) {
   return (
     //             px-4 | p-2
     <motion.div
-    initial={{ scale: 0.8, opacity: 0 }}  // العنصر يبدأ بحجم أصغر وشفافية أقل
-    animate={{ scale: 1, opacity: 1 }}   // العنصر يكبر ليصل للحجم الطبيعي ويصبح مرئيًا
-    exit={{ scale: 0.8, opacity: 0 }}    // عند الخروج، يعود الحجم للانكماش مع الشفافية
-    transition={{ duration: 0.4, ease: "easeOut" }}
+      initial={{ scale: 0.8, opacity: 0 }} // العنصر يبدأ بحجم أصغر وشفافية أقل
+      animate={{ scale: 1, opacity: 1 }} // العنصر يكبر ليصل للحجم الطبيعي ويصبح مرئيًا
+      exit={{ scale: 0.8, opacity: 0 }} // عند الخروج، يعود الحجم للانكماش مع الشفافية
+      transition={{ duration: 0.4, ease: "easeOut" }}
     >
-      <div className=" p-2 shadow-lg   group/parent rounded-md relative">
-        <div className="group-hover/parent:opacity-100 group-hover/parent:visible  invisible  group-hover/parent:left-0 transition-all absolute flex flex-col w-[50px] h-[45%] bg-white opacity-0 shadow-md top-[15px] left-[-50px] text-center">
+      <div className=" p-2 shadow-lg  dark:bg-slate-800    group/parent rounded-md relative">
+        <div className=" z-[6] group-hover/parent:opacity-100 group-hover/parent:visible  invisible  group-hover/parent:left-0 transition-all absolute flex flex-col w-[50px] h-[45%] bg-white opacity-0 shadow-md top-[15px] left-[-50px] text-center">
           <div
             className="cursor-pointer mt-6"
             onClick={() => {
@@ -140,11 +140,17 @@ function Product({ product }) {
             )}
           </div>
         </div>
-        <div className="mb-2">
-          <img src={product.imageCover} alt="" className="w-full  object-cover block" />
+        <div className="mb-2 overflow-hidden">
+          <img
+            src={product.imageCover}
+            alt=""
+            className="w-full hover:scale-[1.1] transition-all  object-cover block"
+          />
         </div>
         <h3 className="text-green-600">{product.category.name}</h3>
-        <h4 className="truncate font-semibold text-lg">{product.title}</h4>
+        <Link to={`/productsdetails/${product.id}/${product.category._id}`}>
+          <h4 className="truncate font-semibold text-lg dark:text-white">{product.title}</h4>
+        </Link>
         <div className="mt-3 flex justify-between items-center text-gray-500 font-medium">
           <span>{product.price} EGP</span>
           <p>

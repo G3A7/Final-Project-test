@@ -5,6 +5,7 @@ import { tokenContext } from "../../context/TokenContextProvider";
 import ingEmptyFav from "../../assets/Animation - 1734995792926-BDjvBpLc.gif";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
+import DefaultLoader from "../DefaultLoader/DefaultLoader";
 
 function Order() {
   const { token } = useContext(tokenContext);
@@ -43,8 +44,9 @@ function Order() {
 
       <section>
         {loader ? (
-          <div className="h-[450px] flex justify-center items-center">
-            <i className="fas fa-spin fa-spinner text-green-600 text-7xl"></i>
+          <div className="min-h-[50vh] flex justify-center items-center">
+            <DefaultLoader/>
+            {/* <i className="fas fa-spin fa-spinner text-green-600 text-7xl"></i> */}
           </div>
         ) : error ? (
           <div
@@ -55,7 +57,7 @@ function Order() {
             {error}
           </div>
         ) : orders?.length == 0 ? (
-          <div className="bg-navbar-bg p-5 min-h-[50vh] flex flex-col items-center justify-center space-y-3">
+          <div className="bg-navbar-bg p-5 dark:text-white dark:bg-slate-800 min-h-[50vh] flex flex-col items-center justify-center space-y-3">
             <img src={ingEmptyFav} alt="" />
             <p className="w-full text-center font-semibold text-lg">
               <span className="text-green-700 font-bold"> Oops!</span> Your Order is empty. Start
@@ -69,7 +71,7 @@ function Order() {
           orders?.map((order) => {
             return (
               <div key={order.id} className=" mb-5 border-green-600 border-[2px] p-2 rounded-md">
-                <div className="flex sm:justify-between items-center flex-wrap justify-center gap-5  p-3 bg-navbar-bg shadow-md">
+                <div className="flex sm:justify-between items-center flex-wrap justify-center gap-5 dark:bg-slate-900  p-3 bg-navbar-bg shadow-md">
                   <p className="text-green-600 text-2xl font-bold">
                     OrderId:
                     <span className="p-2 bg-slate-200 ms-1 rounded-md font-bold"># {order.id}</span>
@@ -124,7 +126,7 @@ function Order() {
                               ? product.product.title.slice(0, 35) + "..."
                               : product.product.title}
                           </h1>
-                          <p className="font-bold text-xl">
+                          <p className="font-bold text-xl dark:text-white">
                             {product.price} * <span className="text-red-500">{product.count}</span>{" "}
                           </p>
                         </div>
@@ -132,7 +134,7 @@ function Order() {
                     );
                   })}
                 </div>
-                <div className="px-3 bg-navbar-bg rounded-md">
+                <div className="px-3 bg-navbar-bg dark:bg-slate-900 dark:text-white  rounded-md">
                   <p className="font-semibold text-2xl">
                     Total Order Price:{" "}
                     <span className="font-bold text-2xl text-green-600">

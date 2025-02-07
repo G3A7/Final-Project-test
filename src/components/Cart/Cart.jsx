@@ -170,7 +170,7 @@ function Cart() {
         </div>
       ) : !cartDetails ? (
         <>
-          <div className="bg-navbar-bg p-5 flex flex-col min-h-[50vh] items-center justify-center space-y-3">
+          <div className="bg-navbar-bg dark:text-white dark:bg-slate-800 p-5 flex flex-col min-h-[50vh] items-center justify-center space-y-3">
             <img src={imgEmptyCart} alt="" />
             <p className="w-full text-center font-semibold text-lg">
               <span className="text-green-700 font-bold"> Oops!</span> Your wishlist is empty. Start
@@ -343,8 +343,8 @@ function Cart() {
                 Check Out
               </Link>
             </div>
-            <div className="text-xl font-mono">
-              Total Price <span className="font-bold text-red-600  text-2xl">{totalPrice}</span> EGP
+            <div className="text-xl font-mono dark:text-white">
+              Total Price <span className="font-bold text-red-600   text-2xl">{totalPrice}</span> EGP
             </div>
           </div>
           {/*

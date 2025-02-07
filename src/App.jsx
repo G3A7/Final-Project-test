@@ -45,6 +45,7 @@ const ForegetPass = lazy(() => import("./components/ForegetPass/ForegetPass"));
 const ResetCode = lazy(() => import("./components/ResetCode/ResetCode"));
 const ResetPassword = lazy(() => import("./components/ResetPassword/ResetPassword"));
 const NotFound = lazy(() => import("./components/NotFound/NotFound"));
+import DefaultLoader from "../src/components/DefaultLoader/DefaultLoader";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
@@ -190,7 +191,7 @@ function App() {
           index: true,
           element: (
             <ProtectedRoute>
-              <Suspense>
+              <Suspense fallback={<DefaultLoader />}>
                 <Home />
               </Suspense>
             </ProtectedRoute>

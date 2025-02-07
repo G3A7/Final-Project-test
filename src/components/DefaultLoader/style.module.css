@@ -1,0 +1,254 @@
+/* * {
+	border: 0;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+
+
+.preloader {
+	text-align: center;
+	max-width: 20em;
+	width: 100%;
+}
+
+.preloader_text {
+	position: relative;
+	height: 1.5em;
+}
+
+.preloader_msg {
+	animation: msg 0.3s 13.7s linear forwards;
+	position: absolute;
+	width: 100%;
+}
+
+.preloader_msg_last {
+	animation-direction: reverse;
+	animation-delay: 14s;
+	visibility: hidden;
+}
+
+.cart {
+	display: block;
+	margin: 0 auto 1.5em auto;
+	width: 8em;
+	height: 8em;
+}
+
+.cart_lines,
+.cart_top,
+.cart_wheel1,
+.cart_wheel2,
+.cart_wheel_stroke {
+	animation: cartLines 2s ease-in-out infinite;
+}
+
+.cart_lines {
+	stroke: hsl(223, 90%, 55%);
+}
+
+.cart_top {
+	animation-name: cartTop;
+}
+
+.cart_wheel1 {
+	animation-name: cartWheel1;
+	transform: rotate(-0.25turn);
+	transform-origin: 43px 111px;
+}
+
+.cart_wheel2 {
+	animation-name: cartWheel2;
+	transform: rotate(0.25turn);
+	transform-origin: 102px 111px;
+}
+
+.cart_wheel_stroke {
+	animation-name: cartWheelStroke;
+}
+
+.cart_track {
+	stroke: hsla(223, 10%, 10%, 0.1);
+	transition: stroke 0.3s;
+}
+
+
+
+@keyframes cartLines {
+	from,
+	to {
+		opacity: 0;
+	}
+	8%,
+	92% {
+		opacity: 1;
+	}
+}
+
+@keyframes cartTop {
+	from {
+		stroke-dashoffset: -338;
+	}
+	50% {
+		stroke-dashoffset: 0;
+	}
+	to {
+		stroke-dashoffset: 338;
+	}
+}
+
+@keyframes cartWheel1 {
+	from {
+		transform: rotate(-0.25turn);
+	}
+	to {
+		transform: rotate(2.75turn);
+	}
+}
+
+@keyframes cartWheel2 {
+	from {
+		transform: rotate(0.25turn);
+	}
+	to {
+		transform: rotate(3.25turn);
+	}
+}
+
+@keyframes cartWheelStroke {
+	from,
+	to {
+		stroke-dashoffset: 81.68;
+	}
+	50% {
+		stroke-dashoffset: 40.84;
+	}
+} */
+* {
+  border: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.preloader {
+  text-align: center;
+  max-width: 20em;
+  width: 100%;
+}
+
+.preloader_text {
+  position: relative;
+  height: 1.5em;
+}
+
+.preloader_msg {
+  animation: msg 0.3s 13.7s linear forwards;
+  position: absolute;
+  width: 100%;
+}
+
+.preloader_msg_last {
+  animation-direction: reverse;
+  animation-delay: 14s;
+  visibility: hidden;
+}
+
+.cart {
+  display: block;
+  margin: 0 auto 1.5em auto;
+  /* زيادة الحجم: من 8em إلى 12em */
+  width: 12em;
+  height: 12em;
+}
+
+.cart_lines,
+.cart_top,
+.cart_wheel1,
+.cart_wheel2,
+.cart_wheel_stroke {
+  animation: cartLines 2s ease-in-out infinite;
+}
+
+.cart_lines {
+  /* تغيير اللون إلى green */
+  stroke: green;
+}
+
+.cart_top {
+  animation-name: cartTop;
+}
+
+.cart_wheel1 {
+  animation-name: cartWheel1;
+  transform: rotate(-0.25turn);
+  transform-origin: 43px 111px;
+}
+
+.cart_wheel2 {
+  animation-name: cartWheel2;
+  transform: rotate(0.25turn);
+  transform-origin: 102px 111px;
+}
+
+.cart_wheel_stroke {
+  animation-name: cartWheelStroke;
+}
+
+.cart_track {
+  stroke: hsla(223, 10%, 10%, 0.1);
+  transition: stroke 0.3s;
+}
+
+@keyframes cartLines {
+  from,
+  to {
+    opacity: 0;
+  }
+  8%,
+  92% {
+    opacity: 1;
+  }
+}
+
+@keyframes cartTop {
+  from {
+    stroke-dashoffset: -338;
+  }
+  50% {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: 338;
+  }
+}
+
+@keyframes cartWheel1 {
+  from {
+    transform: rotate(-0.25turn);
+  }
+  to {
+    transform: rotate(2.75turn);
+  }
+}
+
+@keyframes cartWheel2 {
+  from {
+    transform: rotate(0.25turn);
+  }
+  to {
+    transform: rotate(3.25turn);
+  }
+}
+
+@keyframes cartWheelStroke {
+  from,
+  to {
+    stroke-dashoffset: 81.68;
+  }
+  50% {
+    stroke-dashoffset: 40.84;
+  }
+}

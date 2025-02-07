@@ -58,6 +58,7 @@ function ProductDetails() {
     autoplay: true,
     infinite: true,
     cssEase: "linear",
+    pauseOnHover: false,
     autoplaySpeed: 1000,
     speed: 500,
     slidesToShow: 1,
@@ -119,7 +120,7 @@ function ProductDetails() {
           </div>
         ) : (
           product && (
-            <div className="row items-center bg-navbar-bg  mb-5">
+            <div className="row items-center bg-navbar-bg  dark:bg-slate-900 dark:text-white mb-5">
               <div className="w-full mb-5  md:mb-0 md:w-4/12">
                 <Slider {...settings}>
                   {product?.images.length == 1

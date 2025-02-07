@@ -3,7 +3,7 @@ import axios from "axios";
 
 function useFetch(url, queryKey) {
   const { data, isError, isLoading, error } = useQuery({
-    queryKey,
+    queryKey:[queryKey],
     queryFn: getBrandsAndCategories,
     select: (data) => data.data.data,
   });

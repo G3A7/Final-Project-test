@@ -16,7 +16,7 @@ function ConfirmModal({ logoutFn }) {
       {showModal && (
         <div className="fixed inset-0 flex  p-2 z-[51] items-center justify-center bg-black bg-opacity-50">
           <div className="bg-white flex items-center flex-col justify-center  h-[250px] w-full sm:w-1/2 text-center p-6 rounded-lg shadow-lg">
-            <h2 className="text-lg font-bold">Are You Sure ? 😏</h2>
+            <h2 className="text-lg text-black font-bold">Are You Sure ? 😏</h2>
             <div className="mt-4 flex justify-center space-x-2">
               <button
                 onClick={() => setShowModal(false)}

@@ -74,7 +74,7 @@ function ResetCode() {
           <div className="size-[50px] m-auto">
             <img src={img} alt="" className="w-full h-full object-contain " />
           </div>
-          <h1 className="text-center font-semibold text-2xl">Check your Gmail</h1>
+          <h1 className="text-center font-semibold text-2xl dark:text-white">Check your Gmail</h1>
           <p className="text-center text-gray-600 ">We've sent the code to your email</p>
           <div className="relative z-0 mb-5">
             <input
