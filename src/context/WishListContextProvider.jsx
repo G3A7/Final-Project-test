@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-catch */
 /* eslint-disable react/prop-types */
 import axios from "axios";
 import { createContext, useContext, useState } from "react";
@@ -35,7 +36,6 @@ function WishListContextProvider({ children }) {
         setProductsInWishList(data.data);
         localStorage.setItem("fav", JSON.stringify(data.data));
         setFavLength(data.data.length);
-        // console.log(data);
         return data;
       } else {
         let { data } = await axios.post(url, { productId }, { headers });
@@ -47,8 +47,9 @@ function WishListContextProvider({ children }) {
         return data;
       }
     } catch (error) {
-      //   console.log(error);
-      return error;
+      console.log(error);
+      throw error;
+      // return error;
     } finally {
       setLoaderFav(false);
     }
@@ -61,7 +62,8 @@ function WishListContextProvider({ children }) {
       const { data } = await axios.get(url, { headers });
       return data;
     } catch (error) {
-      return error;
+      throw error;
+      // return error;
     } finally {
       setLoaderFav(false);
     }
@@ -73,12 +75,13 @@ function WishListContextProvider({ children }) {
     try {
       setLoaderFav(true);
       const { data } = await axios.delete(`${url}/${productId}`, { headers });
-      console.log(data);
+      // console.log(data);
       setFavLength(data.data.length);
       return data;
     } catch (error) {
       console.log(error);
-      return error;
+      throw error;
+      // return error;
     } finally {
       setLoaderFav(false);
     }

@@ -8,8 +8,11 @@ import { cartContext } from "../../context/CartContextProvider";
 import toast from "react-hot-toast";
 import { Helmet } from "react-helmet";
 import img from "../../assets/favicon-8OdaHze_.png";
+import { wishListContext } from "../../context/WishListContextProvider";
 
 function ProductDetails() {
+  const { AddToWishList, productsInWishList } = useContext(wishListContext);
+  const [loaderWishList, setLoaderWishList] = useState(0);
   const { addToCart } = useContext(cartContext);
   const [loaderToCart, setLoaderToCart] = useState(false);
   async function addToCartProduct(id) {
@@ -52,6 +55,25 @@ function ProductDetails() {
     }
   }
 
+  async function addToWishListFromDetails(id) {
+    const dataPromise = AddToWishList(id);
+    toast.promise(dataPromise, {
+      loading: "loading",
+      success: (data) => `${data.message} ${data.message.includes("removed") ? "💔" : "❤"}`,
+      error: "error",
+    });
+    try {
+      setLoaderWishList(true);
+      await dataPromise;
+      // console.log(data);
+    } catch (error) {
+      toast.error(error.response.data.message);
+      console.log(error);
+    } finally {
+      setLoaderWishList(false);
+    }
+  }
+
   const settings = {
     dots: false,
     arrows: false,
@@ -85,7 +107,7 @@ function ProductDetails() {
       setLoader(null);
     }
   }
-  console.log(product);
+  // console.log(product);
   useEffect(() => {
     getSpecificproduct();
     window.scroll({
@@ -152,19 +174,43 @@ function ProductDetails() {
                     <i className="fa-solid fa-star text-yellow-300"></i> {product?.ratingsAverage}
                   </p>
                 </div>
-                <button
-                  onClick={() => {
-                    addToCartProduct(product?.id);
-                  }}
-                  disabled={loaderToCart ? true : false}
-                  className={`btn w-full ${loaderToCart ? "cursor-not-allowed" : ""} `}
-                >
-                  {loaderToCart ? (
-                    <i className="fas fa-spin fa-spinner text-white text-lg"></i>
-                  ) : (
-                    "Add To Cart"
-                  )}
-                </button>
+                <div className="flex  justify-between items-center  gap-2">
+                  <button
+                    onClick={() => {
+                      addToCartProduct(product?.id);
+                    }}
+                    disabled={loaderToCart ? true : false}
+                    className={`btn  flex-[2] ${loaderToCart ? "cursor-not-allowed" : ""} `}
+                  >
+                    {loaderToCart ? (
+                      <i className="fas fa-spin fa-spinner text-white text-lg"></i>
+                    ) : (
+                      "Add To Cart"
+                    )}
+                  </button>
+                  <div
+                    className="cursor-pointer  text-center flex-[1] "
+                    onClick={() => {
+                      if (!loaderWishList) {
+                        addToWishListFromDetails(product.id);
+                      }
+                    }}
+                  >
+                    {loaderWishList ? (
+                      <i className="fas fa-spin fa-spinner"></i>
+                    ) : (
+                      <i
+                        className={`fa-solid text-2xl ${
+                          productsInWishList?.find((e) => e == product.id)
+                            ? "text-red-700"
+                            : "text-green-600"
+                        }  fa-heart ${
+                          productsInWishList?.find((e) => e == product.id) ? null : "fa-beat"
+                        }`}
+                      ></i>
+                    )}
+                  </div>
+                </div>
               </div>
             </div>
           )

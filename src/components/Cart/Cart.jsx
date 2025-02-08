@@ -135,6 +135,7 @@ function Cart() {
         localStorage.setItem("numOfCartItems", 0);
         setCartDetails(null);
         setTotalPrice(0);
+        return data;
       }
       // console.log(data);
     } catch (error) {
@@ -344,7 +345,8 @@ function Cart() {
               </Link>
             </div>
             <div className="text-xl font-mono dark:text-white">
-              Total Price <span className="font-bold text-red-600   text-2xl">{totalPrice}</span> EGP
+              Total Price <span className="font-bold text-red-600   text-2xl">{totalPrice}</span>{" "}
+              EGP
             </div>
           </div>
           {/*

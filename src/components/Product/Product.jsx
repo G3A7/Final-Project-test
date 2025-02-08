@@ -69,9 +69,11 @@ function Product({ product }) {
 
     try {
       setLoaderWishList(true);
-      await AddToWishList(id);
+      // AddToWishList(id)
+      await productToWishListPromise;
     } catch (error) {
       console.log(error);
+      toast.error(error.response.data.message);
     } finally {
       setLoaderWishList(false);
     }
@@ -93,9 +95,9 @@ function Product({ product }) {
   return (
     //             px-4 | p-2
     <motion.div
-      initial={{ scale: 0.8, opacity: 0 }} // العنصر يبدأ بحجم أصغر وشفافية أقل
-      animate={{ scale: 1, opacity: 1 }} // العنصر يكبر ليصل للحجم الطبيعي ويصبح مرئيًا
-      exit={{ scale: 0.8, opacity: 0 }} // عند الخروج، يعود الحجم للانكماش مع الشفافية
+      initial={{ scale: 0.8, opacity: 0 }}
+      animate={{ scale: 1, opacity: 1 }}
+      exit={{ scale: 0.8, opacity: 0 }}
       transition={{ duration: 0.4, ease: "easeOut" }}
     >
       <div className=" p-2 shadow-lg  dark:bg-slate-800    group/parent rounded-md relative">

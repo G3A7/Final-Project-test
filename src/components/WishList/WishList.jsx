@@ -30,6 +30,7 @@ function WishList() {
       setError(null);
     } catch (error) {
       setError("Errro");
+      toast.error(error?.response?.data?.message);
       console.log(error?.response?.data?.message);
     } finally {
       setLoading(null);
@@ -47,6 +48,7 @@ function WishList() {
       setError(null);
     } catch (error) {
       setError("Errro");
+      toast.error(error?.response?.data?.message);
       console.log(error?.response?.data?.message);
     }
   }
@@ -77,6 +79,7 @@ function WishList() {
       const data = await dataPromise;
       console.log(data);
     } catch (error) {
+      toast.error(error.response.data.message);
       console.log(error);
     } finally {
       setLoaderIconCart((prev) => ({ ...prev, [id]: false }));
@@ -104,6 +107,7 @@ function WishList() {
       setProductsInWishList(data.data);
       localStorage.setItem("fav", JSON.stringify(data.data));
     } catch (error) {
+      toast.error(error.response.data.message);
       console.log(error);
     } finally {
       setLoaderIcon((prev) => ({ ...prev, [id]: false }));

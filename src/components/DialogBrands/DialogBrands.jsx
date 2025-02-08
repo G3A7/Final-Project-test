@@ -10,7 +10,7 @@ function DialogBrands({ open, setopen, getBrandsImg }) {
     try {
       setLoader(true);
       const img = await getBrandsImg();
-      console.log(img);
+      // console.log(img);
       setImage(img);
     } catch (error) {
       console.log(error);

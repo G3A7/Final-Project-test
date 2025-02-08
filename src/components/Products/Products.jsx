@@ -102,13 +102,13 @@ function Products() {
       )}
       <>
         <div className="mb-5 flex flex-wrap justify-center gap-3 items-center ">
-          <div className="px-3 w-full sm:w-1/2">
+          <div className="px-3 w-full sm:w-1/2 mt-3">
             <input
               onInput={(e) => {
                 filterProductsByName(e);
               }}
               ref={inp}
-              className="border-[2px] rounded-md w-full border-green-600 outline-none shadow-none ring-0 focus:outline-none focus:ring-0 focus:border-green-600"
+              className="border-[2px] rounded-2xl w-full border-green-600 outline-none shadow-none ring-0 focus:outline-none focus:ring-0 focus:border-green-600"
               type="text"
               placeholder="search by name..."
             />

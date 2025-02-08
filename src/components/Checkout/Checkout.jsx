@@ -29,7 +29,7 @@ function Checkout() {
       setLoader(true);
       const data = await dataPromise;
       // console.log(data);
-      console.log(online);
+      // console.log(online);
       if (!online) {
         setTimeout(() => {
           navigate("/allorders");

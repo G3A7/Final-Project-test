@@ -50,7 +50,7 @@ function Navbar() {
 
   async function getDetailsUser() {
     try {
-      console.log("dddd");
+      // console.log("dddd");
       // console.log(token);
       const { id } = jwtDecode(token);
       // console.log(id);
