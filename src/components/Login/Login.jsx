@@ -73,7 +73,7 @@ function Login() {
       <Helmet>
         <title>Login</title>
       </Helmet>
-      <div>
+      <div className="bg-[url('./src/assets/light-patten.svg')]">
         <h2 className="text-center mb-5">
           <span className="text-2xl text-green-700 font-bold">Login To</span>
           <div className="animate-custom_animate inline-block ms-3 align-middle w-[50px] h-[50px]">
@@ -154,7 +154,7 @@ function Login() {
               className={`disabled:cursor-not-allowed btn ${loader ? "cursor-not-allowed" : ""}`}
             >
               {/* <i className="fa fa-spin fa-spinner"></i> */}
-              {loader ? <i className="fa fa-spin fa-spinner"></i> : "Register"}
+              {loader ? <i className="fa fa-spin fa-spinner"></i> : "Login"}
             </button>
           </div>
           <Link to="/forgetpass" className="underline mt-3 block text-green-700">

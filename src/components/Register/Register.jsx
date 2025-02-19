@@ -84,7 +84,7 @@ function Register() {
       <Helmet>
         <title>Register</title>
       </Helmet>
-      <div>
+      <div className="bg-[url('./src/assets/light-patten.svg')]">
         <h2 className="text-center mb-5">
           <span className="text-2xl text-green-700 font-bold">Register To</span>
           <div className="animate-custom_animate inline-block ms-3 align-middle w-[50px] h-[50px]">
