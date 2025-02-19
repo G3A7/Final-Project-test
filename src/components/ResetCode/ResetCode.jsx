@@ -60,7 +60,7 @@ function ResetCode() {
       <Helmet>
         <title>Reset Code</title>
       </Helmet>
-      <div className="min-h-[50vh] bg-[url('./src/assets/light-patten.svg')]">
+      <div className="min-h-[50vh] bg-[url('/light-patten.svg')]">
         <form
           onSubmit={formik.handleSubmit}
           className=" sm:max-w-md mx-auto  relative py-5 shadow-md  sm:py-6 px-2 rounded-md "

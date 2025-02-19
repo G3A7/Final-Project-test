@@ -73,7 +73,7 @@ function Login() {
       <Helmet>
         <title>Login</title>
       </Helmet>
-      <div className="bg-[url('./src/assets/light-patten.svg')]">
+      <div className="bg-[url('/light-patten.svg')]">
         <h2 className="text-center mb-5">
           <span className="text-2xl text-green-700 font-bold">Login To</span>
           <div className="animate-custom_animate inline-block ms-3 align-middle w-[50px] h-[50px]">
