@@ -213,6 +213,10 @@ function Navbar() {
                         ? "relative active pb-2 dark:text-white"
                         : "relative after:absolute dark:text-white after:w-0 after:border-b-[3px] after:border-green-600 after:bg-green-600 after:bottom-0 after:left-0 hover:after:w-full after:transition-all after:duration-[.5s] pb-2 "
                     }
+                    onClick={() => {
+                      setHeight(75);
+                      setExapnd(!expand);
+                    }}
                     to={"/"}
                   >
                     Home
@@ -225,6 +229,10 @@ function Navbar() {
                         ? "relative active pb-2 dark:text-white "
                         : "relative after:absolute dark:text-white after:w-0 after:border-b-[3px] after:border-green-600 after:bg-green-600 after:bottom-0 after:left-0 hover:after:w-full after:transition-all after:duration-[.5s] pb-2"
                     }
+                    onClick={() => {
+                      setHeight(75);
+                      setExapnd(!expand);
+                    }}
                     to={"/products"}
                   >
                     Products
@@ -238,6 +246,10 @@ function Navbar() {
                         ? "relative active pb-2 dark:text-white "
                         : "relative after:absolute dark:text-white after:w-0 after:border-b-[3px] after:border-green-600 after:bg-green-600 after:bottom-0 after:left-0 hover:after:w-full after:transition-all after:duration-[.5s] pb-2"
                     }
+                    onClick={() => {
+                      setHeight(75);
+                      setExapnd(!expand);
+                    }}
                     to={"/category"}
                   >
                     Categories
@@ -250,6 +262,10 @@ function Navbar() {
                         ? "relative active pb-2 dark:text-white "
                         : "relative after:absolute dark:text-white after:w-0 after:border-b-[3px] after:border-green-600 after:bg-green-600 after:bottom-0 after:left-0 hover:after:w-full after:transition-all after:duration-[.5s] pb-2"
                     }
+                    onClick={() => {
+                      setHeight(75);
+                      setExapnd(!expand);
+                    }}
                     to={"/brands"}
                   >
                     Brands
@@ -262,6 +278,10 @@ function Navbar() {
                         ? "relative active pb-2 dark:text-white "
                         : "relative after:absolute dark:text-white after:w-0 after:border-b-[3px] after:border-green-600 after:bg-green-600 after:bottom-0 after:left-0 hover:after:w-full after:transition-all after:duration-[.5s] pb-2"
                     }
+                    onClick={() => {
+                      setHeight(75);
+                      setExapnd(!expand);
+                    }}
                     to={"/allorders"}
                   >
                     Orders

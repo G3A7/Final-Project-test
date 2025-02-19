@@ -137,7 +137,7 @@ function Products() {
               (productFilter || products)?.map((e) => {
                 return (
                   <motion.div
-                    className="p-2 w-full sm:w-6/12 md:w-4/12 lg:w-3/12"
+                    className="p-2 w-1/2 sm:w-6/12 md:w-4/12 lg:w-3/12"
                     key={e.id + (productFilter ? "filtered" : "")}
                   >
                     <Product product={e} />

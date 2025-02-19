@@ -52,7 +52,7 @@ function RelatedProducts() {
             products &&
             products?.map((e) => {
               return (
-                <motion.div className="p-2 w-full sm:w-6/12 md:w-4/12 lg:w-3/12" key={e.id}>
+                <motion.div className="p-2 w-1/2 sm:w-6/12 md:w-4/12 lg:w-3/12" key={e.id}>
                   <Product product={e} />
                 </motion.div>
               );

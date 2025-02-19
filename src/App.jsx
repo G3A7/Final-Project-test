@@ -48,6 +48,7 @@ const NotFound = lazy(() => import("./components/NotFound/NotFound"));
 import DefaultLoader from "../src/components/DefaultLoader/DefaultLoader";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import CategorySpecific from "./components/CategorySpecific/CategorySpecific";
 
 function App() {
   const queryClient = new QueryClient();
@@ -203,6 +204,16 @@ function App() {
             <ProtectedRoute>
               <Suspense>
                 <Products />
+              </Suspense>
+            </ProtectedRoute>
+          ),
+        },
+        {
+          path: "/CategorySpecific/:id",
+          element: (
+            <ProtectedRoute>
+              <Suspense>
+                <CategorySpecific />
               </Suspense>
             </ProtectedRoute>
           ),

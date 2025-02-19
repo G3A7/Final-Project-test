@@ -1,8 +1,10 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Slider from "react-slick";
 
 function CategorySlider() {
+  const navigate = useNavigate();
   const settings = {
     dots: false,
     arrows: false,
@@ -13,7 +15,7 @@ function CategorySlider() {
     speed: 500,
     // lazyLoad: true,
     slidesToShow: 7,
-    pauseOnHover: false,
+    pauseOnHover: true,
     slidesToScroll: 1,
     responsive: [
       {
@@ -64,7 +66,13 @@ function CategorySlider() {
         <Slider {...settings}>
           {categories.map((e) => {
             return (
-              <div key={e._id}>
+              <div
+                key={e._id}
+                title="Click me to show sub category 😎"
+                onClick={() => {
+                  navigate(`/CategorySpecific/${e._id}`), scrollTo(0, 0);
+                }}
+              >
                 <img
                   src={e.image}
                   className="w-full cursor-pointer  block h-[255px] object-cover"

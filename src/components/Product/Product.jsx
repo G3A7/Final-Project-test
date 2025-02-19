@@ -101,9 +101,9 @@ function Product({ product }) {
       transition={{ duration: 0.4, ease: "easeOut" }}
     >
       <div className=" p-2 shadow-lg  dark:bg-slate-800    group/parent rounded-md relative">
-        <div className=" z-[6] group-hover/parent:opacity-100 group-hover/parent:visible  invisible  group-hover/parent:left-0 transition-all absolute flex flex-col w-[50px] h-[45%] bg-white opacity-0 shadow-md top-[15px] left-[-50px] text-center">
+        <div className=" z-[6] group-hover/parent:opacity-100 group-hover/parent:visible  invisible  group-hover/parent:left-0 transition-all absolute flex flex-col w-[50px] min-h-[35%] bg-white opacity-0 shadow-md top-[15px] left-[-50px] text-center">
           <div
-            className="cursor-pointer mt-6"
+            className="cursor-pointer mt-5"
             onClick={() => {
               if (!loaderWishList) {
                 addProductToWishList(product.id);
@@ -128,7 +128,7 @@ function Product({ product }) {
             </div>
           </Link>
           <div
-            className="cursor-pointer mt-6"
+            className="cursor-pointer mt-6 mb-2"
             onClick={() => {
               if (!loader) {
                 addToCartProduct(product.id);
