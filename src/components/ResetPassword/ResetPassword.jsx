@@ -69,7 +69,7 @@ function ResetPassword() {
       <Helmet>
         <title>Reset Password</title>
       </Helmet>
-      <div className="min-h-[50vh] bg-[url('/light-patten.svg')]">
+      <div className="min-h-[60vh] bg-[url('/light-patten.svg')]">
         <form
           onSubmit={formik.handleSubmit}
           className=" sm:max-w-md mx-auto  relative py-5 shadow-md  sm:py-6 px-2 rounded-md "

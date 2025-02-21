@@ -53,7 +53,7 @@ function ForegetPass() {
   });
 
   return (
-    <div className="min-h-[50vh] bg-[url('/light-patten.svg')]">
+    <div className="min-h-[60vh] bg-[url('/light-patten.svg')]">
       <Helmet>
         <title>Forget Password</title>
       </Helmet>
