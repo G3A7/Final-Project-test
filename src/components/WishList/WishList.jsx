@@ -120,7 +120,7 @@ function WishList() {
   }, [token]);
 
   return (
-    <div className="">
+    <div className="min-h-[60vh]">
       <Helmet>
         <title>WishList</title>
         <meta name="description" content="Fresh Cart Products" />

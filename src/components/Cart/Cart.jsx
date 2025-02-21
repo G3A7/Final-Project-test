@@ -149,7 +149,7 @@ function Cart() {
   }, [token]);
 
   return (
-    <>
+    <div className="min-h-[60vh]">
       <Helmet>
         <title>cart</title>
         <meta name="description" content="Fresh Cart Cart" />
@@ -429,7 +429,7 @@ function Cart() {
       ) : (
         <h1 className="bg-red-800 text-center text-white text-3xl">No Data</h1>
       )}
-    </>
+    </div>
   );
 }
 
